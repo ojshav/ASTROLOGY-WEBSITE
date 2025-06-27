@@ -28,6 +28,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     "/admin/login",
     "/signin",
     "/admin/stone",
+    "/astrologer/profile",
+    "/astrologer/availability",
+    "/astrologer/bookings",
+    "/astrologer/consultations",
+    "/astrologer/reviews",
+    "/astrologer/withdraw",
     "/astrologer/register",
     "/astrologer/auth",
     "/astrologer/forgot-password"
