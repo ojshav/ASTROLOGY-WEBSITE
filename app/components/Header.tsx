@@ -70,6 +70,11 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isStudyDropdownOpen, setIsStudyDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  // Add state for mobile nav bar consultations dropdown
+  const [isConsultationBarOpen, setIsConsultationBarOpen] = useState(false);
+  // Add state for mobile menu Study dropdown
+  const [isStudyOpen, setIsStudyOpen] = useState(false);
 
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -152,20 +157,159 @@ export function Header() {
 
   return (
     <>
-      {/* 1. Top bar: Only show on mobile/tablet */}
-      <div className="flex items-center justify-between w-full px-4 py-2 md:hidden" style={{ background: '#F3F1EB' }}>
-        <Link href="/" className="font-bold text-xl tracking-tight" style={{ fontFamily: 'Playfair Display, serif', color: '#000', letterSpacing: '-0.01em' }}>
-          {t('header.logo.line2')}
-        </Link>
-        <button
-          id="hamburger-button"
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 bg-white/80 hover:bg-gray-100 transition-colors focus:outline-none"
-          aria-label={t('header.nav.menu') || 'Open menu'}
-        >
-          <Menu className="h-6 w-6 text-black" />
-        </button>
+      <div
+  className="flex items-center justify-between w-full px-4 py-2 md:hidden"
+  style={{ background: '#F3F1EB' }}
+>
+  {/* Left: Logo */}
+  <Link
+    href="/"
+    className="font-bold text-xl tracking-tight"
+    style={{
+      fontFamily: 'Playfair Display, serif',
+      color: '#000',
+      letterSpacing: '-0.01em',
+    }}
+  >
+    NG
+  </Link>
+
+  {/* Right: Search + Cart + Hamburger */}
+  <div className="flex items-center gap-3">
+    {/* Search Input (now inside a form, triggers search on Enter) */}
+    <form onSubmit={handleSearchSubmit} className="w-full max-w-[150px]">
+      <input
+        type="text"
+        placeholder="Search"
+        className="px-3 py-1 w-full text-sm text-black rounded-full bg-white border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </form>
+
+    {/* Cart Icon */}
+    <Link href="/cart">
+  <button
+    className="relative w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 bg-white/80 hover:bg-gray-100"
+    aria-label="Cart"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5 text-black"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.6 8M17 13l1.6 8M6 21a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 100-2 1 1 0 000 2z" />
+    </svg>
+  </button>
+</Link>
+
+    {/* Hamburger Icon */}
+    <button
+      id="hamburger-button"
+      onClick={() => setIsMobileMenuOpen(true)}
+      className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 bg-white/80 hover:bg-gray-100 transition-colors focus:outline-none"
+      aria-label={t('header.nav.menu') || 'Open menu'}
+    >
+      <Menu className="h-6 w-6 text-black" />
+    </button>
+  </div>
+</div>
+{/* Mobile horizontal nav bar (below top bar) */}
+<div className="md:hidden w-full flex justify-center items-center gap-2 px-2 py-2 relative" style={{ background: '#FDF9EF' }}>
+  {/* Consultations dropdown trigger */}
+  <button
+    type="button"
+    className="text-sm font-bold text-black px-2 py-1 rounded transition-colors flex items-center gap-1"
+    style={{ fontFamily: 'Playfair Display, serif', color: '#000', fontWeight: 700 }}
+    onClick={() => setIsConsultationBarOpen((prev) => !prev)}
+  >
+    {t("header.nav.consultations")}
+    <span className={`transition-transform duration-300 ${isConsultationBarOpen ? 'rotate-180' : ''}`}>▼</span>
+  </button>
+  <Link
+    href="/talk-to-astrologer"
+    className="text-sm font-bold text-black px-2 py-1 rounded transition-colors"
+    style={{ fontFamily: 'Playfair Display, serif', color: '#000', fontWeight: 700 }}
+  >
+    {t("header.nav.talk_to_astrologer")}
+  </Link>
+  <Link
+    href="/shop"
+    className="text-sm font-bold text-black px-2 py-1 rounded transition-colors"
+    style={{ fontFamily: 'Playfair Display, serif', color: '#000', fontWeight: 700 }}
+  >
+    {t("header.nav.buy_products")}
+  </Link>
+  <Link
+    href="/services"
+    className="text-sm font-bold text-black px-2 py-1 rounded transition-colors"
+    style={{ fontFamily: 'Playfair Display, serif', color: '#000', fontWeight: 700 }}
+  >
+    {t("header.nav.our_services")}
+  </Link>
+  {/* Dropdown below nav bar */}
+  <div className={`absolute left-0 top-full w-full z-40 transition-all duration-300 ${isConsultationBarOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`} style={{ background: '#FDF9EF', borderRadius: '0 0 1rem 1rem', boxShadow: isConsultationBarOpen ? '0 4px 24px 0 rgba(36,34,68,0.08)' : 'none', overflow: 'hidden' }}>
+    <div className="py-2 px-2 flex flex-col gap-2">
+      {/* Consultations group */}
+      <div>
+        <div className="text-base font-bold mb-1" style={{ color: '#77A656', fontFamily: 'Playfair Display, serif' }}>{t('header.mega_menu.consultations.title')}</div>
+        <ul className="flex flex-col gap-1">
+          {servicesMegaMenu.consultations.items.map((item) => (
+            <li key={item.key}>
+              <Link
+                href={item.href}
+                onClick={() => setIsConsultationBarOpen(false)}
+                className="block text-black px-3 py-2 rounded-md text-base font-medium hover:bg-[#e9eafc] transition-all"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                {t(`header.mega_menu.consultations.items.${item.key}`)}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
+      {/* Puja & Rituals group */}
+      <div>
+        <div className="text-base font-bold mb-1" style={{ color: '#77A656', fontFamily: 'Playfair Display, serif' }}>{t('header.mega_menu.puja_rituals.title')}</div>
+        <ul className="flex flex-col gap-1">
+          {servicesMegaMenu.puja_rituals.items.map((item) => (
+            <li key={item.key}>
+              <Link
+                href={item.href}
+                onClick={() => setIsConsultationBarOpen(false)}
+                className="block text-black px-3 py-2 rounded-md text-base font-medium hover:bg-[#e9eafc] transition-all"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                {t(`header.mega_menu.puja_rituals.items.${item.key}`)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {/* Horoscopes group */}
+      <div>
+        <div className="text-base font-bold mb-1" style={{ color: '#77A656', fontFamily: 'Playfair Display, serif' }}>{t('header.mega_menu.horoscopes.title')}</div>
+        <ul className="flex flex-col gap-1">
+          {servicesMegaMenu.horoscopes.items.map((item) => (
+            <li key={item.key}>
+              <Link
+                href={item.href}
+                onClick={() => setIsConsultationBarOpen(false)}
+                className="block text-black px-3 py-2 rounded-md text-base font-medium hover:bg-[#e9eafc] transition-all"
+                style={{ fontFamily: 'Playfair Display, serif' }}
+              >
+                {t(`header.mega_menu.horoscopes.items.${item.key}`)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
       {/* 2. Desktop header/nav: Only show on md+ screens */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
@@ -535,23 +679,8 @@ export function Header() {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white z-[999] shadow-2xl flex flex-col p-6 gap-6 md:hidden overflow-y-auto max-h-screen"
           >
-            {/* Search Bar at the top of sidebar */}
-            <form onSubmit={handleSearchSubmit} className="mb-4 w-full">
-              <div className="flex flex-col gap-2 w-full">
-                <input
-                  type="text"
-                  placeholder={t('header.search_placeholder') || t('header.search') || 'Search...'}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white rounded-full shadow border border-gray-200 px-4 py-2 text-base text-black font-medium focus:outline-none"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                />
-                {/* Mobile search button */}
-                <button type="submit" className="w-full rounded-full font-semibold shadow transition-colors text-base py-2" style={{ fontFamily: 'Playfair Display, serif', background: '#77A656', color: '#fff' }}>
-                  {t('header.search_button') || t('header.search') || 'Search'}
-                </button>
-              </div>
-            </form>
+            {/* Search Bar at the top of sidebar - REMOVED */}
+            {/* <form onSubmit={handleSearchSubmit} className="mb-4 w-full"> ... </form> */}
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="self-end mb-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200"
@@ -564,12 +693,44 @@ export function Header() {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.home')}</Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.about')}</Link>
               <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.blog')}</Link>
-              <Link href="/study" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.study')}</Link>
+              {/* Study Dropdown */}
+              <div>
+                <button
+                  type="button"
+                  className="w-full flex items-center justify-between font-semibold text-lg text-black py-2 px-0 focus:outline-none"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                  onClick={() => setIsStudyOpen((prev) => !prev)}
+                >
+                  <span>{t('header.nav.study')}</span>
+                  <span className={`ml-2 transition-transform duration-300 ease-in-out ${isStudyOpen ? 'rotate-180' : ''}`}>▼</span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isStudyOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+                  style={{ background: '#FDF9EF', borderRadius: '0.75rem' }}
+                >
+                  <div className="py-2 px-2 flex flex-col gap-2">
+                    <Link
+                      href="/study"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-black px-3 py-2 rounded-md text-base font-medium hover:bg-[#e9eafc] transition-all"
+                      style={{ fontFamily: 'Playfair Display, serif' }}
+                    >
+                      {t('header.nav.study')}
+                    </Link>
+                    <Link
+                      href="/courses"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-black px-3 py-2 rounded-md text-base font-medium hover:bg-[#e9eafc] transition-all"
+                      style={{ fontFamily: 'Playfair Display, serif' }}
+                    >
+                      {t('header.nav.courses')}
+                    </Link>
+                  </div>
+                </div>
+              </div>
               <Link href="/courses" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.courses')}</Link>
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.contact')}</Link>
-              <Link href="/talk-to-astrologer" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.talk_to_astrologer')}</Link>
-              <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.buy_products')}</Link>
-              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} className="font-semibold text-lg text-black" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.nav.our_services')}</Link>
+              {/* Consultations Dropdown REMOVED FROM HAMBURGER MENU */}
               {/* Language Selector in Drawer */}
               <div className="mt-4 w-full">
                 <button
@@ -606,7 +767,7 @@ export function Header() {
               </div>
               {/* Auth/Cart/Join buttons */}
               <div className="flex gap-3 mt-6">
-                <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="flex-1 py-2 rounded-full bg-[#f7f7fa] text-black font-semibold text-center" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.cart')}</Link>
+                {/* <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="flex-1 py-2 rounded-full bg-[#f7f7fa] text-black font-semibold text-center" style={{ fontFamily: 'Playfair Display, serif' }}>{t('header.cart')}</Link> */}
                 {/* Mobile Join Us button */}
                 <a href="/astrologer/auth/" onClick={() => setIsMobileMenuOpen(false)} className="flex-1 py-2 rounded-full font-semibold text-center" style={{ background: '#77A656', color: '#fff', fontFamily: 'Playfair Display, serif' }}>{t('header.nav.join_us') || t('header.join_us') || 'Join Us'}</a>
                 {/* Mobile Sign In button */}

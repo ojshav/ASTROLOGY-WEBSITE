@@ -30,42 +30,49 @@ const products = [
     description: 'Authentic, lab-certified gemstones for planetary remedies and spiritual growth.',
     price: '₹2,499',
     slug: 'gemstone-collection',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752753177/naturalstones_xsst5z.jpg"
   },
   {
     title: 'Rudraksha Mala & Beads',
     description: 'Energized Rudraksha beads and malas for protection, peace, and spiritual power.',
     price: '₹1,199',
     slug: 'rudraksha-collection',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752753830/rudrakshamala_pibmxj.jpg"
   },
   {
     title: 'Energized Yantras',
     description: 'Sacred spiritual diagrams (Yantras) energized for prosperity, health, and harmony.',
     price: '₹799',
     slug: 'yantras',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752754014/yantra_kppksi.jpg"
   },
   {
     title: 'Puja Samagri & Ritual Kits',
     description: 'Complete kits for home puja, havan, and Vedic rituals, including all essentials.',
     price: '₹999',
     slug: 'puja-samagri-kits',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752754218/puja_samagri_sc0vpt.jpg"
   },
   {
     title: 'Astrology Reports & Kundli Services',
     description: 'Personalized astrology reports, Janam Kundli, and detailed horoscope analysis.',
     price: '₹499',
     slug: 'astrology-reports-kundli',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752754647/kundli_h5hiqg.jpg"
   },
   {
     title: 'Spiritual Accessories',
     description: 'Incense holders, copper bottles, meditation mats, and more for your spiritual space.',
     price: '₹399',
     slug: 'spiritual-accessories',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752754784/accessory_viwtit.jpg"
   },
   {
     title: 'Personalized Astrology Tools',
     description: 'Custom-engraved pendants, name plates, and tools based on your birth chart.',
     price: '₹1,499',
     slug: 'personalized-astrology-tools',
+    image:"https://res.cloudinary.com/dxwspucxw/image/upload/v1752754941/personalized_astrology_tools_mj3501.jpg"
   },
 ];
 
@@ -159,7 +166,7 @@ export default function ShopPage() {
               {products.map((product, idx) => (
                 <ProductServiceCard
                   key={product.slug}
-                  image={'/images/placeholder.jpg'}
+                  image={product.image}
                   title={product.title}
                   description={product.description}
                   badge={'BEST SELLER'}
