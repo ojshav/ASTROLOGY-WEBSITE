@@ -23,7 +23,7 @@ export default function UnderstandingVedicAstrologyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-32">
+    <div className="min-h-screen bg-white pt-0 md:pt-2">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Banner Heading */}
         <div className="w-full rounded-3xl bg-gradient-to-r from-[#fdf6f2] via-[#f3e8ff] to-[#e0f2fe] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-[#f3e8ff]">
@@ -36,24 +36,11 @@ export default function UnderstandingVedicAstrologyPage() {
           <div className="lg:col-span-2">
             {/* Header Section */}
             <div className="mb-8">
-              {/* Tabs */}
-              <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
-                  >
-                    {tab}
-                  </button>
-                ))}
+              <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
+                <span className="flex items-center gap-1"><User className="w-4 h-4" /> {post.author.en}</span>
+                <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {post.date}</span>
+                <span className="flex items-center gap-1"><BookOpen className="w-4 h-4" /> {post.category}</span>
               </div>
-            </div>
-            {/* Key Takeaway */}
-            <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8 rounded-lg">
-              <p className="text-gray-700">
-                <span className="text-indigo-600 font-medium">Key Takeaway:</span> Vedic astrology is a profound science that reveals your life&apos;s blueprint, helping you understand your strengths, challenges, and the timing of important events.
-              </p>
             </div>
             {/* Hero Image */}
             <div className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
@@ -80,6 +67,25 @@ export default function UnderstandingVedicAstrologyPage() {
               <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-lg">
                 <span className="text-indigo-600 font-medium">Tip:</span> Consult a qualified astrologer to interpret your chart and recommend personalized remedies for your goals and challenges. Keep a journal of your experiences to notice how planetary cycles affect your life.
               </div>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            {/* Key Takeaway */}
+            <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8 rounded-lg">
+              <p className="text-gray-700">
+                <span className="text-indigo-600 font-medium">Key Takeaway:</span> Vedic astrology is a profound science that reveals your life&apos;s blueprint, helping you understand your strengths, challenges, and the timing of important events.
+              </p>
             </div>
             {/* Tab Content */}
             {activeTab === 'Overview' && (

@@ -23,7 +23,7 @@ export default function GemstonesAndPowersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-32">
+    <div className="min-h-screen bg-white pt-0 md:pt-2">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Banner Heading */}
         <div className="w-full rounded-3xl bg-gradient-to-r from-[#fdf6f2] via-[#f3e8ff] to-[#e0f2fe] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-[#f3e8ff]">
@@ -33,6 +33,33 @@ export default function GemstonesAndPowersPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
+            {/* Hero Image */}
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
+              <Image src="/images/ASTRO.webp" alt={post.title.en} fill className="object-cover" />
+            </motion.div>
+            {/* Intro */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
+              <p>
+                {post.content.en.split('\n')[0]}
+              </p>
+              <p>
+                <span className="font-semibold text-indigo-700">Ancient Wisdom:</span> For thousands of years, gemstones have been revered not just for their beauty, but for their profound metaphysical properties. Ancient civilizations understood that these crystalline formations hold unique vibrational frequencies that can influence our energy fields, chakras, and overall well-being.
+              </p>
+              <p>
+                <span className="font-semibold text-indigo-700">Scientific Perspective:</span> Modern science recognizes that gemstones have piezoelectric properties - they can generate electrical charges when subjected to pressure. This scientific basis supports the ancient belief that gems can influence energy patterns and create positive changes in our lives.
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-4">
+                <li><span className="font-semibold text-indigo-700">Planetary Connection:</span> Each gemstone is associated with specific planets and their energies. When worn correctly, they can strengthen weak planetary influences in your birth chart and balance excessive ones, bringing harmony to your life.</li>
+                <li><span className="font-semibold text-indigo-700">Chakra Alignment:</span> Gemstones work on different chakras, helping to clear blockages and enhance energy flow. This can lead to improved physical health, emotional stability, and spiritual growth.</li>
+                <li><span className="font-semibold text-indigo-700">Protection & Healing:</span> Many stones offer protective qualities, shielding you from negative energies, electromagnetic radiation, and psychic attacks. They also promote healing on physical, emotional, and spiritual levels.</li>
+                <li><span className="font-semibold text-indigo-700">Manifestation Power:</span> Certain gemstones can amplify your intentions and help manifest your desires. They work as catalysts, enhancing your natural abilities and attracting positive opportunities.</li>
+                <li><span className="font-semibold text-indigo-700">Meditation & Spirituality:</span> Gems can deepen your meditation practice, enhance intuition, and accelerate spiritual development. They serve as tools for connecting with higher consciousness and divine energies.</li>
+              </ul>
+              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-lg">
+                <span className="text-indigo-600 font-medium">Important:</span> Always consult a qualified astrologer before wearing gemstones. The wrong stone can sometimes amplify negative planetary influences, so proper guidance is essential for maximum benefit.
+              </div>
+            </motion.div>
+
             {/* Tabs */}
             <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
               {tabs.map((tab) => (
@@ -49,16 +76,6 @@ export default function GemstonesAndPowersPage() {
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8 rounded-lg">
               <p className="text-gray-700">
                 <span className="text-indigo-600 font-medium">Key Takeaway:</span> Gemstones are not just beautiful—they are powerful tools for healing, protection, and spiritual growth when chosen and worn with awareness.
-              </p>
-            </motion.div>
-            {/* Hero Image */}
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image src="/images/ASTRO.webp" alt={post.title.en} fill className="object-cover" />
-            </motion.div>
-            {/* Intro */}
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
-              <p>
-                {post.content.en.split('\n')[0]}
               </p>
             </motion.div>
             {/* Tab Content */}

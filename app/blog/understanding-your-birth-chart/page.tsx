@@ -23,7 +23,7 @@ export default function UnderstandingYourBirthChartPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-32">
+    <div className="min-h-screen bg-white pt-0 md:pt-2">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Banner Heading */}
         <div className="w-full rounded-3xl bg-gradient-to-r from-[#fdf6f2] via-[#f3e8ff] to-[#e0f2fe] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-[#f3e8ff]">
@@ -33,27 +33,9 @@ export default function UnderstandingYourBirthChartPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Tabs */}
-            <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
-              {tabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-            {/* Key Takeaway */}
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-400 p-6 mb-8 rounded-lg shadow-sm">
-              <p className="text-gray-700 text-lg leading-relaxed text-justify">
-                <span className="text-indigo-600 font-bold text-xl">Key Takeaway:</span> Your birth chart is not a fixed destiny but a cosmic instruction manual. It reveals your natural talents, challenges, and the unique path you&apos;re designed to walk in this lifetime.
-              </p>
-            </motion.div>
             {/* Hero Image */}
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image src="/images/astrology.svg" alt={post.title.en} fill className="object-cover" />
+              <Image src="https://res.cloudinary.com/dxwspucxw/image/upload/v1752049127/birth-chart_zqq2nn.jpg" alt={post.title.en} fill className="object-cover" />
             </motion.div>
             {/* Intro */}
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
@@ -87,6 +69,25 @@ export default function UnderstandingYourBirthChartPage() {
               <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-orange-400 p-6 rounded-lg">
                 <span className="text-orange-700 font-bold text-lg">Pro Tip:</span> <span className="text-black font-semibold">Your birth chart is most accurate when you have your exact birth time. Even a few minutes difference can change your Ascendant and house positions significantly.</span>
               </div>
+            </motion.div>
+
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            {/* Key Takeaway */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-gradient-to-r from-indigo-50 to-purple-50 border-l-4 border-indigo-400 p-6 mb-8 rounded-lg shadow-sm">
+              <p className="text-gray-700 text-lg leading-relaxed text-justify">
+                <span className="text-indigo-600 font-bold text-xl">Key Takeaway:</span> Your birth chart is not a fixed destiny but a cosmic instruction manual. It reveals your natural talents, challenges, and the unique path you&apos;re designed to walk in this lifetime.
+              </p>
             </motion.div>
             {/* Tab Content */}
             {activeTab === 'Overview' && (

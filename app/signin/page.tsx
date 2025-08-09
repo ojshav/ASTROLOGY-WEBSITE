@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { signIn, getSession } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -9,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { AnimatedStars } from '../components/AnimatedStars'
 import { MysticBackground } from '../components/MysticBackground'
 import Footer from '../components/Footer'
-import { User, Lock, Mail, Star } from 'lucide-react'
+import { User, Lock, Mail, Star, Eye, EyeOff } from 'lucide-react'
 
 const FloatingCard = ({ className, children }: { className?: string; children?: React.ReactNode }) => (
   <div
@@ -81,6 +82,9 @@ export default function SignInPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showLoginPassword, setShowLoginPassword] = useState(false)
+  const [showSignupPassword, setShowSignupPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const handleCredentialSubmit = async (event: React.FormEvent<HTMLFormElement>, action: 'login' | 'signup') => {
     event.preventDefault()
@@ -204,16 +208,30 @@ export default function SignInPage() {
                       <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                       <Input
                         name="password"
-                        type="password"
+                        type={showLoginPassword ? "text" : "password"}
                         placeholder="Password"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="w-full pl-11 pr-12 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
                       />
+                      <button
+                        type="button"
+                        className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black hover:text-gray-600 transition-colors"
+                        onClick={() => setShowLoginPassword(!showLoginPassword)}
+                      >
+                        {showLoginPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
                   </div>
                   <Button type="submit" className="w-full font-semibold text-lg py-3 rounded-lg bg-black text-white hover:bg-gray-900 transition-all" disabled={isLoading}>
                     {isLoading ? 'Loading...' : 'Login'}
                   </Button>
                 </form>
+                
+                <div className="mt-4 text-center">
+                  <Link href="/forgot-password" className="text-sm text-amber-600 hover:underline font-medium">
+                    Forgot Password?
+                  </Link>
+                </div>
+                
                 <div className="mt-6 text-center text-black text-sm">Or continue with</div>
                 <div className="mt-4">
                   <Button
@@ -268,21 +286,35 @@ export default function SignInPage() {
                       <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                       <Input
                         name="password"
-                        type="password"
+                        type={showSignupPassword ? "text" : "password"}
                         placeholder="Create Password"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="w-full pl-11 pr-12 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
                       />
+                      <button
+                        type="button"
+                        className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black hover:text-gray-600 transition-colors"
+                        onClick={() => setShowSignupPassword(!showSignupPassword)}
+                      >
+                        {showSignupPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
                   </div>
                   <div className="relative">
                       <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                       <Input
                         name="confirmPassword"
-                        type="password"
+                        type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm Password"
                         required
-                        className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                        className="w-full pl-11 pr-12 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
                       />
+                      <button
+                        type="button"
+                        className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black hover:text-gray-600 transition-colors"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      >
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
                   </div>
                   <Button type="submit" className="w-full font-semibold text-lg py-3 rounded-lg bg-black text-white hover:bg-gray-900 transition-all" disabled={isLoading}>
                     {isLoading ? 'Loading...' : 'Create Account'}

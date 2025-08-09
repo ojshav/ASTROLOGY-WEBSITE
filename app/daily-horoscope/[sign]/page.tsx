@@ -29,8 +29,8 @@ export default function DailyHoroscopePage({ params }: { params: { sign: string 
   };
 
   return (
-    <div className="min-h-screen bg-white pt-16 md:pt-24">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-white pt-16 md:pt-10">
+      <div className="max-w-7xl mx-auto px-4 pt-2 pb-4">
         {/* Banner Heading */}
         <div className="w-full rounded-3xl bg-gradient-to-r from-[#fdf6f2] via-[#f3e8ff] to-[#e0f2fe] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-[#f3e8ff]">
           <h1 className="text-5xl md:text-6xl font-extrabold text-black mb-4 text-center drop-shadow-lg tracking-tight">Daily Horoscope: {horoscope.sign}</h1>
@@ -39,6 +39,11 @@ export default function DailyHoroscopePage({ params }: { params: { sign: string 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
+            {/* Hero Image */}
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
+              <Image src={horoscope.image} alt={`${horoscope.sign} zodiac sign`} fill className="object-cover" />
+            </motion.div>
+            
             {/* Tabs */}
             <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
               {tabs.map((tab) => (
@@ -56,10 +61,6 @@ export default function DailyHoroscopePage({ params }: { params: { sign: string 
               <p className="text-gray-700">
                 <span className="text-indigo-600 font-medium">Key Takeaway:</span> {horoscope.overview.takeaway}
               </p>
-            </motion.div>
-            {/* Hero Image */}
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image src={horoscope.image} alt={`${horoscope.sign} zodiac sign`} fill className="object-cover" />
             </motion.div>
             
             {/* Tab Content */}

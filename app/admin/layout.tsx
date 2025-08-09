@@ -23,13 +23,30 @@ import {
   UserCircle2,
   Orbit,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  LucideIcon
 } from 'lucide-react';
 
+// Type definitions
+interface NavChild {
+  label: string;
+  href: string;
+  active: boolean;
+}
+
+interface NavItem {
+  icon: LucideIcon;
+  label: string;
+  href?: string;
+  active: boolean;
+  children?: NavChild[];
+  expanded?: boolean;
+}
+
 // Memoized Navigation Link Component
-const NavigationLink = memo(({ item }: { item: any }) => (
+const NavigationLink = memo(({ item }: { item: NavItem }) => (
   <Link 
-    href={item.href}
+    href={item.href!}
     prefetch={true} // Enable prefetching for better performance
     className={`
       flex items-center space-x-3 p-2 rounded-lg transition-colors
@@ -52,11 +69,11 @@ const ProductsDropdown = memo(({
   isOpen, 
   onToggle 
 }: { 
-  item: any; 
+  item: NavItem; 
   isOpen: boolean; 
   onToggle: () => void; 
 }) => {
-  const isAnyChildActive = item.children.some((child: any) => child.active);
+  const isAnyChildActive = item.children?.some((child: NavChild) => child.active);
   
   return (
     <div>
@@ -81,7 +98,7 @@ const ProductsDropdown = memo(({
       </button>
       {isOpen && (
         <div className="ml-8 mt-1 space-y-1">
-          {item.children.map((child: any) => (
+          {item.children?.map((child: NavChild) => (
             <Link
               key={child.href}
               href={child.href}

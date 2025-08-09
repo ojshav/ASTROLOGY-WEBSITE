@@ -42,7 +42,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "मेष",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/aries.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754555259/aries_daily_befohq.png",
     overview: {
       title: "Today's Forecast for Aries",
       content: [
@@ -105,7 +105,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "वृषभ",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/taurus.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556342/Taurus_qnsgar.png",
     overview: {
       title: "Today's Forecast for Taurus",
       content: [
@@ -167,7 +167,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "मिथुन",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/gemini.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556343/Gemini_kjqrtl.png",
     overview: {
       title: "Today's Forecast for Gemini",
       content: [
@@ -232,7 +232,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "कर्क",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/cancer.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556346/Cancer_sgabek.png",
     overview: {
       title: "Today's Forecast for Cancer",
       content: [
@@ -297,7 +297,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "सिंह",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/leo.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556367/leo_ynxtts.png",
     overview: {
       title: "Today's Forecast for Leo",
       content: [
@@ -362,7 +362,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "कन्या",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/virgo.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556342/Virgo_p7fsyl.png",
     overview: {
       title: "Today's Forecast for Virgo",
       content: [
@@ -427,7 +427,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "तुला",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/libra.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556360/Libra_wgw2b0.png",
     overview: {
       title: "Today's Forecast for Libra",
       content: [
@@ -492,7 +492,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "धनु",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/sagittarius.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556365/Saggitarius_rr44xl.png",
     overview: {
       title: "Today's Forecast for Sagittarius",
       content: [
@@ -557,7 +557,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "वृश्चिक",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/scorpio.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556341/Scorpio_vk9by5.png",
     overview: {
       title: "Today's Forecast for Scorpio",
       content: [
@@ -622,7 +622,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "मकर",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/capricorn.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556368/capricorn_has0km.png",
     overview: {
       title: "Today's Forecast for Capricorn",
       content: [
@@ -687,7 +687,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "कुंभ",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/aquarius.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556372/aquarius_p6wkxz.png",
     overview: {
       title: "Today's Forecast for Aquarius",
       content: [
@@ -752,7 +752,7 @@ export const horoscopeData: Record<string, Horoscope> = {
     sign_hi: "मीन",
     date: "July 27, 2024",
     author: "Dr. Narendra Kumar Sharma",
-    image: "/images/zodiac/pisces.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556343/Pisces_syoesx.png",
     overview: {
       title: "Today's Forecast for Pisces",
       content: [

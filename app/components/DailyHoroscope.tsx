@@ -266,9 +266,9 @@ export function DailyHoroscope() {
     }
   };
   const productCardImages = [
-    ['/images/gemstone1.jpg', '/images/gemstone2.jpg', '/images/astrology_app.jpg', '/images/astrowellness.jpg'],
-    ['/images/yantra1.jpg', '/images/yantra2.jpg', '/images/myth.jpg', '/images/horoscopedaily.jpg'],
-    ['/images/rudraksha1.jpg', '/images/rudraksha2.jpg', '/images/astro.jpg', '/images/astrology_understanding.jpg'],
+    ['https://res.cloudinary.com/dxwspucxw/image/upload/v1753179309/amulets_wsxif3.png', 'https://res.cloudinary.com/dxwspucxw/image/upload/v1753178892/healing_remedy_fe8zlb.png'],
+    ['https://res.cloudinary.com/dxwspucxw/image/upload/v1753178835/healing_d4zat3.png', 'https://res.cloudinary.com/dxwspucxw/image/upload/v1753092132/book_collection_xmxrru.jpg'],
+    ['https://res.cloudinary.com/dxwspucxw/image/upload/v1753091688/mala_svpxn3.jpg', 'https://res.cloudinary.com/dxwspucxw/image/upload/v1752754784/accessory_viwtit.jpg'],
   ];
   const [imgIdxs, setImgIdxs] = useState([0, 0, 0]);
   useEffect(() => {

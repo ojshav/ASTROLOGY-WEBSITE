@@ -12,7 +12,7 @@ interface CartItem {
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (item: Omit<CartItem, 'quantity'>) => void;
+  addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   total: number;
@@ -70,16 +70,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [items, loading]);
 
-  const addItem = (item: Omit<CartItem, 'quantity'>) => {
+  const addItem = (item: Omit<CartItem, 'quantity'>, quantity: number = 1) => {
     setItems(currentItems => {
       const existingItem = currentItems.find(i => i.id === item.id);
       let newItems;
       if (existingItem) {
         newItems = currentItems.map(i => 
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i
         );
       } else {
-        newItems = [...currentItems, { ...item, quantity: 1 }];
+        newItems = [...currentItems, { ...item, quantity }];
       }
       if (!loading) saveCartToStorage(newItems);
       return newItems;

@@ -23,7 +23,7 @@ export default function NumerologyBasicsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-32">
+    <div className="min-h-screen bg-white pt-0 md:pt-2">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Banner Heading */}
         <div className="w-full rounded-3xl bg-gradient-to-r from-[#fdf6f2] via-[#f3e8ff] to-[#e0f2fe] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-[#f3e8ff]">
@@ -33,6 +33,37 @@ export default function NumerologyBasicsPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
+            {/* Hero Image */}
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
+              <Image src="https://res.cloudinary.com/dxwspucxw/image/upload/v1752049129/numerology_yl4ss6.jpg" alt={post.title.en} fill className="object-cover" />
+            </motion.div>
+            {/* Intro */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
+              <p>
+                {post.content.en.split('\n')[0]}
+              </p>
+              <p>
+                <span className="font-semibold text-indigo-700">What is Numerology?</span> Numerology is the mystical study of numbers and their influence on human life. It&apos;s based on the belief that numbers have vibrational frequencies that affect our personality, relationships, career, and life path. By understanding these numerical patterns, we can gain insights into our strengths, challenges, and purpose.
+              </p>
+              <p>
+                <span className="font-semibold text-indigo-700">Ancient Origins:</span> Numerology has roots in various ancient civilizations including Babylonian, Egyptian, Greek, and Hebrew cultures. The modern system is largely based on the work of Pythagoras, the Greek mathematician and philosopher, who believed that numbers were the foundation of all reality.
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-4">
+                <li><span className="font-semibold text-indigo-700">Life Path Number:</span> Derived from your birth date, reveals your life&apos;s purpose and the lessons you&apos;re here to learn. This is considered the most important number in your numerological profile.</li>
+                <li><span className="font-semibold text-indigo-700">Destiny Number:</span> Calculated from your full name, indicates your natural talents and the path you&apos;re destined to follow. It shows what you&apos;re meant to accomplish in this lifetime.</li>
+                <li><span className="font-semibold text-indigo-700">Soul Number:</span> Based on the vowels in your name, represents your inner desires and spiritual aspirations. It reveals what truly motivates you at a soul level.</li>
+                <li><span className="font-semibold text-indigo-700">Personality Number:</span> Derived from consonants in your name, shows how others perceive you. It&apos;s like your social mask or the first impression you make.</li>
+                <li><span className="font-semibold text-indigo-700">Birth Day Number:</span> Your day of birth reveals your natural talents and abilities. It shows the tools you came into this life with.</li>
+                <li><span className="font-semibold text-indigo-700">Maturity Number:</span> Shows the person you&apos;ll become in the latter part of your life. It&apos;s calculated by adding your Life Path and Destiny numbers.</li>
+                <li><span className="font-semibold text-indigo-700">Personal Year Number:</span> Changes annually, indicating the theme and opportunities for each year. It helps you understand the energy and focus for any given year.</li>
+                <li><span className="font-semibold text-indigo-700">Karmic Debt Numbers:</span> Reveal past-life lessons and challenges to overcome. These are 13, 14, 16, and 19, indicating specific karmic patterns to resolve.</li>
+                <li><span className="font-semibold text-indigo-700">Master Numbers:</span> 11, 22, and 33 carry special spiritual significance and higher vibrations. They represent enhanced spiritual potential but also greater challenges.</li>
+              </ul>
+              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-lg">
+                <span className="text-indigo-600 font-medium">Tip:</span> Numerology works best when combined with self-awareness and conscious effort. Numbers provide guidance, but your choices and actions shape your destiny. Start by calculating your Life Path Number to understand your core purpose.
+              </div>
+            </motion.div>
+
             {/* Tabs */}
             <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
               {tabs.map((tab) => (
@@ -50,33 +81,6 @@ export default function NumerologyBasicsPage() {
               <p className="text-gray-700 text-justify">
                 <span className="text-indigo-600 font-medium">Key Takeaway:</span> Numbers are not just mathematical symbols—they carry vibrational energies that influence every aspect of your life, from personality traits to life purpose and destiny.
               </p>
-            </motion.div>
-            {/* Hero Image */}
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
-              <Image src="/images/Numerology.svg" alt={post.title.en} fill className="object-cover" />
-            </motion.div>
-            {/* Intro */}
-            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
-              <p>
-                {post.content.en.split('\n')[0]}
-              </p>
-              <p>
-                <span className="font-semibold text-indigo-700">What is Numerology?</span> Numerology is the mystical study of numbers and their influence on human life. It&apos;s based on the belief that numbers have vibrational frequencies that affect our personality, relationships, career, and life path. By understanding these numerical patterns, we can gain insights into our strengths, challenges, and purpose.
-              </p>
-              <ul className="list-disc list-inside ml-4 space-y-4">
-                <li><span className="font-semibold text-indigo-700">Life Path Number:</span> Derived from your birth date, reveals your life&apos;s purpose and the lessons you&apos;re here to learn.</li>
-                <li><span className="font-semibold text-indigo-700">Destiny Number:</span> Calculated from your full name, indicates your natural talents and the path you&apos;re destined to follow.</li>
-                <li><span className="font-semibold text-indigo-700">Soul Number:</span> Based on the vowels in your name, represents your inner desires and spiritual aspirations.</li>
-                <li><span className="font-semibold text-indigo-700">Personality Number:</span> Derived from consonants in your name, shows how others perceive you.</li>
-                <li><span className="font-semibold text-indigo-700">Birth Day Number:</span> Your day of birth reveals your natural talents and abilities.</li>
-                <li><span className="font-semibold text-indigo-700">Maturity Number:</span> Shows the person you&apos;ll become in the latter part of your life.</li>
-                <li><span className="font-semibold text-indigo-700">Personal Year Number:</span> Changes annually, indicating the theme and opportunities for each year.</li>
-                <li><span className="font-semibold text-indigo-700">Karmic Debt Numbers:</span> Reveal past-life lessons and challenges to overcome.</li>
-                <li><span className="font-semibold text-indigo-700">Master Numbers:</span> 11, 22, and 33 carry special spiritual significance and higher vibrations.</li>
-              </ul>
-              <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-lg">
-                <span className="text-indigo-600 font-medium">Tip:</span> Numerology works best when combined with self-awareness and conscious effort. Numbers provide guidance, but your choices and actions shape your destiny.
-              </div>
             </motion.div>
             {/* Tab Content */}
             {activeTab === 'Overview' && (
@@ -173,7 +177,7 @@ export default function NumerologyBasicsPage() {
                 <Link href="/blog/understanding-your-birth-chart" className="block">
                   <div className="flex items-center gap-4">
                     <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-orange-100">
-                      <Image src="/images/astrology.svg" alt="Birth Chart" fill className="object-cover" />
+                      <Image src="https://res.cloudinary.com/dxwspucxw/image/upload/v1752049129/numerology_yl4ss6.jpg" alt="Birth Chart" fill className="object-cover" />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm text-orange-600 font-medium mb-1">Next in Series</p>

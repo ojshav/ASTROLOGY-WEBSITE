@@ -23,7 +23,7 @@ export default function InfluenceOfPlanetsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-32">
+    <div className="min-h-screen bg-white pt-0 md:pt-2">
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
@@ -38,29 +38,12 @@ export default function InfluenceOfPlanetsPage() {
                 <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {post.date}</span>
                 <span className="flex items-center gap-1"><BookOpen className="w-4 h-4" /> {post.category}</span>
               </div>
-              {/* Tabs */}
-              <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-            </div>
-            {/* Key Takeaway */}
-            <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8 rounded-lg">
-              <p className="text-gray-700">
-                <span className="text-indigo-600 font-medium">Key Takeaway:</span> The nine planets (Navagraha) influence every aspect of our lives—understanding their effects can help you align with cosmic energies and find remedies for challenges.
-              </p>
             </div>
             {/* Hero Image */}
             <div className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden shadow-lg">
               <Image src={post.imageUrl} alt={post.title.en} fill className="object-cover" />
             </div>
+            
             {/* Intro */}
             <div className="mb-8 text-lg leading-relaxed text-gray-700 space-y-6 text-justify">
               <p>
@@ -84,6 +67,25 @@ export default function InfluenceOfPlanetsPage() {
               <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-lg">
                 <span className="text-indigo-600 font-medium">Tip:</span> Keep a daily journal of your moods, experiences, and planetary transits. Over time, you&apos;ll notice patterns that help you harness positive energies and navigate challenges with wisdom.
               </div>
+            </div>
+
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 mb-6 border-b border-gray-200">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-600 hover:text-gray-900'}`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+            {/* Key Takeaway */}
+            <div className="bg-indigo-50 border-l-4 border-indigo-400 p-4 mb-8 rounded-lg">
+              <p className="text-gray-700">
+                <span className="text-indigo-600 font-medium">Key Takeaway:</span> The nine planets (Navagraha) influence every aspect of our lives—understanding their effects can help you align with cosmic energies and find remedies for challenges.
+              </p>
             </div>
             {/* Tab Content */}
             {activeTab === 'Overview' && (

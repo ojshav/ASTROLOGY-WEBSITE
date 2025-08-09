@@ -77,7 +77,7 @@ export function ContactForm() {
     <section id="contact-us" className="relative bg-black text-white overflow-hidden min-h-screen py-20">
       {/* Floating decorative cards matching footer style */}
       <FloatingCard 
-        href="#contact-us"
+        href="/shop"
         className="top-[10%] left-4 w-72 rotate-[-12deg] opacity-90 z-10"
         gradient="bg-gradient-to-br from-violet-500 via-pink-500 to-orange-400"
       >
@@ -105,7 +105,7 @@ export function ContactForm() {
       </FloatingCard>
 
       <FloatingCard 
-        href="/services"
+        href="/chat-with-astrologer"
         className="bottom-[5%] left-4 w-80 rotate-[-8deg] opacity-90 z-10"
         gradient="bg-gradient-to-br from-purple-600 via-indigo-500 to-blue-500"
       >

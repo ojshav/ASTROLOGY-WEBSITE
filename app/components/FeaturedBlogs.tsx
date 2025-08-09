@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/useLanguage';
+import { usePathname } from 'next/navigation';
 
 // Define proper types for blog data
 interface BlogContent {
@@ -41,6 +42,11 @@ const getBlogUrl = (title: string) => {
 
 export default function FeaturedBlogs() {
   const { lang, t } = useLanguage();
+  const pathname = usePathname();
+  
+  // Check if we're on the blog page
+  const isBlogPage = pathname === '/blog';
+  
   // Get the first 6 blogs
   const blogs = Object.values(blogPosts).slice(0, 6) as BlogPost[];
 
@@ -48,10 +54,12 @@ export default function FeaturedBlogs() {
     <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-10">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-black">{t('blog.featured.heading')}</h2>
-        <Link href="/blog" className="inline-flex items-center px-4 py-2 rounded-lg bg-black text-white text-base font-semibold hover:bg-gray-800 transition">
-          {t('blog.featured.viewAll')}
-          <span className="ml-2">&rarr;</span>
-        </Link>
+        {!isBlogPage && (
+          <Link href="/blog" className="inline-flex items-center px-4 py-2 rounded-lg bg-black text-white text-base font-semibold hover:bg-gray-800 transition">
+            {t('blog.featured.viewAll')}
+            <span className="ml-2">&rarr;</span>
+          </Link>
+        )}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog, idx) => {
@@ -91,4 +99,4 @@ export default function FeaturedBlogs() {
       </div>
     </section>
   );
-} 
+}

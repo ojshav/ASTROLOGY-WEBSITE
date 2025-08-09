@@ -29,7 +29,7 @@ export default function AstrologicalRemediesPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-green-50 to-white font-sans pt-16 md:pt-24">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-green-50 to-white font-sans pt-2 md:pt-4">
       <div className="container mx-auto pb-16 px-4 relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="w-full rounded-3xl bg-gradient-to-r from-[#f0fff4] via-[#f5fff5] to-[#f0fff9] py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-green-100">
           <h1 className="text-5xl md:text-6xl font-extrabold text-black mb-4 text-center drop-shadow-lg font-serif" style={{ fontFamily: 'Cormorant Garamond, serif' }}>Astrological Remedies for Life</h1>
@@ -70,8 +70,19 @@ export default function AstrologicalRemediesPage() {
                 </p>
               </div>
               <div className="flex items-center justify-center">
-                <div className="w-full max-w-md">
-                  <DrNarendraProfile />
+                <div className="w-full max-w-lg">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }} 
+                    animate={{ opacity: 1, scale: 1 }} 
+                    transition={{ duration: 0.7 }}
+                    className="relative w-full h-80 rounded-2xl overflow-hidden shadow-xl border border-green-200"
+                  >
+                    <img 
+                      src="https://res.cloudinary.com/dxwspucxw/image/upload/v1754641601/astrology_remedy_jsighf.jpg" 
+                      alt="Astrological Remedies" 
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -181,61 +192,61 @@ export default function AstrologicalRemediesPage() {
             <Accordion type="single" collapsible className="w-full space-y-4">
               <AccordionItem value="item-1" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">What are astrological remedies?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Astrological remedies are a set of ancient practices prescribed in Vedic texts designed to pacify or strengthen planetary energies in one&apos;s life. They are therapeutic measures used to alleviate challenges and enhance positive outcomes based on an individual&apos;s unique birth chart.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">How do remedies work?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Remedies work on the principle of resonance and karmic adjustment. Practices like chanting mantras, wearing gemstones, or performing charity create specific energetic vibrations that counteract negative planetary influences or amplify positive ones. They are tools to help consciously re-align your energy with a more favorable cosmic flow.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Is it necessary to spend a lot of money on remedies?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Not at all. While some remedies like high-quality gemstones or elaborate Yagyas can be an investment, many of the most powerful remedies are free. These include chanting specific mantras, fasting on certain days, offering water to celestial bodies, and performing simple acts of service and charity. The sincerity and consistency of the practice are more important than the cost.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Can anyone perform these remedies?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Yes, most simple remedies can be performed by anyone. However, it is crucial that they are recommended by a qualified astrologer based on a thorough analysis of your birth chart. Performing the wrong remedy can be ineffective or, in some cases, even counterproductive. Personalization is key.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-5" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Can I perform remedies for future problems?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Absolutely. One of the primary purposes of Vedic astrology is proactive guidance. By identifying potential future challenges in the birth chart, an astrologer can prescribe preemptive remedies to mitigate their impact long before they manifest, allowing for a smoother life journey.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-6" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Can I do remedies for someone else, like my child or spouse?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Yes, certain remedies, especially prayers, pujas, and acts of charity (Daan), can be performed by close family members on behalf of another. The intention (Sankalpa) is key. However, remedies involving wearing something on the body, like a gemstone or Rudraksha, must be done by the individual themselves.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-7" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">What if I can&apos;t afford expensive gemstones? Are there effective, low-cost remedies?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Definitely. Vedic astrology offers a vast range of remedies for every budget. Mantra chanting, fasting on specific days, offering water (Arghya), selfless service (Seva), and lifestyle changes are incredibly powerful and completely free. The sincerity and consistency of the practice are more important than the monetary cost.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-8" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">How do I know if a remedy is working?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   The effects are often subtle at first. Look for signs of inner change: increased mental peace, a more positive outlook, and feeling more &apos;in flow&apos;. Externally, you may notice that obstacles seem to dissolve more easily, and new opportunities begin to appear. It&apos;s a gradual shift, not an overnight miracle.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-9" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Can remedies change my destiny completely?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   Remedies don&apos;t erase karma, but they can significantly change how you experience it. They provide the wisdom and strength to navigate your karmic path gracefully. Think of it like this: you can&apos;t change the cards you were dealt, but remedies teach you how to play your hand masterfully, drastically improving the outcome of the game.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-10" className="bg-white rounded-lg shadow-md px-6 py-4">
                 <AccordionTrigger className="text-lg font-semibold text-gray-800 hover:text-green-700 text-left">Why is a qualified astrologer necessary for prescribing remedies?</AccordionTrigger>
-                <AccordionContent className="pt-4 text-gray-600" style={{ fontFamily: 'Lora, serif' }}>
+                <AccordionContent className="pt-4 text-gray-600 text-base md:text-lg" style={{ fontFamily: 'Lora, serif' }}>
                   A birth chart is a complex document. An experienced astrologer can analyze the intricate planetary relationships to pinpoint the true source of a problem. Prescribing the wrong remedy, like strengthening a planet that should be pacified, can be ineffective or even counterproductive. Professional guidance ensures the remedy is safe, appropriate, and powerful.
                 </AccordionContent>
               </AccordionItem>

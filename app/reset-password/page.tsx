@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
-import { AnimatedStars } from '../../components/AnimatedStars';
-import { MysticBackground } from '../../components/MysticBackground';
+import { AnimatedStars } from '../components/AnimatedStars';
+import { MysticBackground } from '../components/MysticBackground';
 import { Eye, EyeOff } from 'lucide-react';
 
 const ResetPasswordPage = () => {
@@ -33,11 +33,16 @@ const ResetPasswordPage = () => {
       return;
     }
 
+    if (newPassword.length < 6) {
+      toast({ title: "Error", description: "Password must be at least 6 characters long.", variant: "destructive" });
+      return;
+    }
+
     setLoading(true);
     try {
-      await axios.post("/api/astrologer/reset-password", { token, newPassword });
-      toast({ title: "Success", description: "Password has been reset!", variant: "default" });
-      router.push("/astrologer/auth");
+      await axios.post("/api/auth/reset-password", { token, newPassword });
+      toast({ title: "Success", description: "Password has been reset successfully!", variant: "default" });
+      router.push("/signin");
     } catch (err: unknown) {
       toast({
         title: "Error",
@@ -58,7 +63,7 @@ const ResetPasswordPage = () => {
           Reset Your Password
         </h2>
         <p className="text-sm text-center text-gray-500 mb-6">
-          Enter a new password for your astrologer account
+          Enter a new password for your account
         </p>
 
         <form className="space-y-5" onSubmit={handleSubmit}>
@@ -113,8 +118,8 @@ const ResetPasswordPage = () => {
         <div className="mt-6 text-center text-sm text-gray-500">
           <p>
             Back to{' '}
-            <Link href="/astrologer/auth" className="text-amber-600 hover:underline font-medium">
-              Login
+            <Link href="/signin" className="text-amber-600 hover:underline font-medium">
+              Sign In
             </Link>
           </p>
         </div>

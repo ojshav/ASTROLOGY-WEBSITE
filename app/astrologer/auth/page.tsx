@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, Lock, User, Star } from 'lucide-react';
+import { Mail, Lock, User, Star, Eye, EyeOff } from 'lucide-react';
 import { AnimatedStars } from '../../components/AnimatedStars';
 import { MysticBackground } from '../../components/MysticBackground';
 
@@ -54,6 +54,7 @@ const AstrologerAuthPage = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -125,13 +126,20 @@ const AstrologerAuthPage = () => {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                 <input
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                  className="w-full pl-11 pr-12 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
                 />
+                <button
+                  type="button"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-black hover:text-gray-600 transition-colors"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
               </div>
               <button
                 type="submit"
@@ -141,6 +149,13 @@ const AstrologerAuthPage = () => {
                 {isLoading ? 'Loading...' : 'Sign in to Astrologer Account'}
               </button>
             </form>
+            
+            <div className="mt-4 text-center">
+              <Link href="/astrologer/forgot-password" className="text-sm text-amber-600 hover:underline font-medium">
+                Forgot Password?
+              </Link>
+            </div>
+            
             {/* Google sign-in removed for astrologer login */}
             <div className="mt-6 text-center text-sm text-gray-500">
               <p>

@@ -28,7 +28,7 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Ваши ежедневные советы для Овна, с акцентом на карьеру и финансы."
     },
     href: "/daily-horoscope/aries",
-    image: "/images/astro.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556366/ariies___vgl9oj.png",
   },
   {
     title: {
@@ -52,7 +52,7 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Узнайте, что звезды готовят Тельцу в любви и отношениях."
     },
     href: "/daily-horoscope/taurus",
-    image: "/images/astrology_app.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556342/Taurus_qnsgar.png",
   },
   {
     title: {
@@ -76,7 +76,7 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Советы для Близнецов по здоровью и благополучию на сегодня."
     },
     href: "/daily-horoscope/gemini",
-    image: "/images/astrowellness.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556343/Gemini_kjqrtl.png",
   },
   {
     title: {
@@ -100,7 +100,7 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Советы по карьерному росту и личному развитию для Раков."
     },
     href: "/daily-horoscope/cancer",
-    image: "/images/myth.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556346/Cancer_sgabek.png",
   },
   {
     title: {
@@ -124,7 +124,7 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Финансовые прогнозы и счастливые числа для Льва на сегодня."
     },
     href: "/daily-horoscope/leo",
-    image: "/images/horoscopedaily.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556367/leo_ynxtts.png",
   },
   {
     title: {
@@ -148,6 +148,6 @@ export const horoscopeCards: HoroscopeCard[] = [
       ru: "Любовная жизнь и социальные взаимодействия Девы на этой неделе."
     },
     href: "/daily-horoscope/virgo",
-    image: "/images/astrology_understanding.jpg",
+    image: "https://res.cloudinary.com/dxwspucxw/image/upload/v1754556342/Virgo_p7fsyl.png",
   },
 ]; 

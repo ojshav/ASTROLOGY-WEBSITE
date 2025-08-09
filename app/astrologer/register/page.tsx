@@ -7,6 +7,7 @@ import { MysticBackground } from '../../components/MysticBackground';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { Eye, EyeOff } from 'lucide-react';
 
 const areas = ['Vedic', 'Tarot', 'Numerology', 'Palmistry', 'Western'];
 
@@ -20,6 +21,8 @@ const AstrologerRegisterPage = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [profileImagePreview, setProfileImagePreview] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -140,8 +143,42 @@ const AstrologerRegisterPage = () => {
                 <input name="lastName" value={form.lastName} onChange={handleChange} placeholder="Last Name" required className="px-4 py-2 bg-white text-black border border-gray-200 rounded-xl" />
                 <input name="email" value={form.email} onChange={handleChange} placeholder="Email" type="email" required className="px-4 py-2 bg-white text-black border border-gray-200 rounded-xl" />
                 <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone Number" type="tel" pattern="[0-9]{10}" required className="px-4 py-2 bg-white text-black border border-gray-200 rounded-xl" />
-                <input name="password" value={form.password} onChange={handleChange} type="password" placeholder="Password" required className="px-4 py-2 bg-white text-black border border-gray-200 rounded-xl" />
-                <input name="confirmPassword" value={form.confirmPassword} onChange={handleChange} type="password" placeholder="Confirm Password" required className="px-4 py-2 bg-white text-black border border-gray-200 rounded-xl" />
+                <div className="relative">
+                  <input 
+                    name="password" 
+                    value={form.password} 
+                    onChange={handleChange} 
+                    type={showPassword ? "text" : "password"} 
+                    placeholder="Password" 
+                    required 
+                    className="w-full px-4 pr-12 py-2 bg-white text-black border border-gray-200 rounded-xl" 
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 hover:text-gray-800 transition-colors"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+                <div className="relative">
+                  <input 
+                    name="confirmPassword" 
+                    value={form.confirmPassword} 
+                    onChange={handleChange} 
+                    type={showConfirmPassword ? "text" : "password"} 
+                    placeholder="Confirm Password" 
+                    required 
+                    className="w-full px-4 pr-12 py-2 bg-white text-black border border-gray-200 rounded-xl" 
+                  />
+                  <button
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600 hover:text-gray-800 transition-colors"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
               </div>
 
               {/* Areas of Expertise (2 columns) */}

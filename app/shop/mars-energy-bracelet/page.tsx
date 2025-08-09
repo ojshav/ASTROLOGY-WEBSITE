@@ -9,6 +9,7 @@ import { ProductServiceCard } from "../../components/UniversalServiceGrid";
 import ServiceCarousels from '../../components/ServiceCarousels';
 import NakshatraGyaanBanner from '../../components/NakshatraGyaanBanner';
 import SpiritualJourneyBanner from '../../components/SpiritualJourneyBanner';
+import { useCart } from '../../contexts/CartContext';
 
 // Mars Energy Bracelet Product Configuration
 const marsEnergyBracelet = {
@@ -109,6 +110,19 @@ export default function MarsEnergyBraceletPage() {
   const [quantity, setQuantity] = useState(1);
   const [pincode, setPincode] = useState("");
   const [openFaqs, setOpenFaqs] = useState<Set<number>>(new Set());
+  const { items, updateQuantity } = useCart();
+
+  // Find if this product is already in cart and get its quantity
+  const productId = "mars-energy-bracelet";
+  const cartItem = items.find(item => item.id === productId);
+  const cartQuantity = cartItem?.quantity || 0;
+
+  // Sync local quantity with cart quantity when cart changes
+  useEffect(() => {
+    if (cartQuantity > 0) {
+      setQuantity(cartQuantity);
+    }
+  }, [cartQuantity]);
 
   // Real-time offer timer
   const OFFER_DURATION = 2 * 60 * 60 + 15 * 60 + 45; // 2 hr 15 min 45 sec in seconds
@@ -215,13 +229,28 @@ export default function MarsEnergyBraceletPage() {
               <span className="text-sm text-[#23244a]">Quantity</span>
               <button
                 className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-lg font-bold text-[#23244a] bg-white"
-                onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                onClick={() => {
+                  const newQty = Math.max(1, quantity - 1);
+                  setQuantity(newQty);
+                  if (cartQuantity > 0) {
+                    updateQuantity(productId, newQty);
+                  }
+                }}
               >-</button>
               <span className="text-base font-medium text-[#23244a] w-7 text-center">{quantity}</span>
               <button
                 className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-lg font-bold text-[#23244a] bg-white"
-                onClick={() => setQuantity(q => q + 1)}
+                onClick={() => {
+                  const newQty = quantity + 1;
+                  setQuantity(newQty);
+                  if (cartQuantity > 0) {
+                    updateQuantity(productId, newQty);
+                  }
+                }}
               >+</button>
+              {cartQuantity > 0 && (
+                <span className="text-xs text-green-600 ml-2">({cartQuantity} in cart)</span>
+              )}
             </div>
             <div className="text-xs text-gray-600 mt-1">{marsEnergyBracelet.orders.toLocaleString()} orders placed in the last 24 hours</div>
             {/* Delivery Date Input */}
@@ -242,14 +271,14 @@ export default function MarsEnergyBraceletPage() {
             {/* Add to Cart / Buy Now */}
             <div className="flex gap-3 mt-5">
               <UniversalCartButton
-                productId="mars-energy-bracelet"
+                productId={productId}
                 productName={marsEnergyBracelet.title}
                 price={Number(marsEnergyBracelet.price.replace(/[^\d]/g, ''))}
                 image={marsEnergyBracelet.images[0]}
                 quantity={quantity}
                 className="flex-1 bg-black text-white py-3 rounded-md font-semibold text-base hover:bg-[#23244a] transition"
               >
-                ADD TO CART
+                {cartQuantity > 0 ? 'UPDATE CART' : 'ADD TO CART'}
               </UniversalCartButton>
               <button className="flex-1 bg-yellow-400 text-black py-3 rounded-md font-semibold text-base hover:bg-yellow-500 transition">BUY IT NOW</button>
             </div>

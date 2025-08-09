@@ -86,9 +86,9 @@ export default function CoursesPage() {
   ];
 
   return (
-    <div style={{ background: '#F8FAF5', minHeight: '100vh' }}>
+    <div style={{ background: '#F8FAF5', minHeight: '100vh' }} className="pt-8">
       {/* New Banner */}
-      <div className="w-full rounded-3xl bg-white py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-amber-200 max-w-7xl mx-auto mt-32">
+      <div className="w-full rounded-3xl bg-white py-12 px-4 md:px-16 mb-12 flex flex-col items-center justify-center shadow-md border border-amber-200 max-w-7xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-extrabold text-black mb-4 text-center drop-shadow-lg tracking-tight">
           Our Astrology Courses
         </h1>
@@ -98,7 +98,7 @@ export default function CoursesPage() {
       </div>
 
       {/* Courses Grid */}
-      <section className="py-20">
+      <section>
         <div className="container mx-auto px-4">
           <h2 className="text-black text-4xl font-bold text-center mb-12 text-black">Course Curriculum</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -125,9 +125,56 @@ export default function CoursesPage() {
                   ))}
                 </div>
                 <Link href={`/courses/${course.slug}`} className="w-full">
-                  <Button className="w-full bg-orange-300 hover:bg-orange-400 text-white font-bold py-3 rounded-lg transition-all">
-                    {t('courses.courses.enrollButton')}
-                  </Button>
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    whileTap={{ y: 0 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="w-full relative"
+                  >
+                    <button 
+                      className="w-full relative text-white font-semibold py-3 px-6 rounded-lg cursor-pointer border-2 border-transparent bg-clip-padding transition-all duration-200 group"
+                      style={{
+                        background: `
+                          linear-gradient(#000000, #000000),
+                          linear-gradient(#000000 50%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0)),
+                          linear-gradient(90deg, #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565)
+                        `,
+                        backgroundOrigin: 'border-box',
+                        backgroundClip: 'padding-box, border-box, border-box',
+                        backgroundSize: '100%, 100%, 200%',
+                        animation: 'gradientShift 3s infinite linear'
+                      }}
+                    >
+                      <span className="relative z-10">
+                        {t('courses.courses.enrollButton')}
+                      </span>
+                      
+                      {/* Glowing effect */}
+                      <div 
+                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3/5 h-2 z-0 rounded-full opacity-60 blur-md group-hover:opacity-80 transition-opacity duration-300"
+                        style={{
+                          background: 'linear-gradient(90deg, #FF6D1B, #FFEE55, #5BFF89, #4D8AFF, #6B5FFF, #FF64F9, #FF6565)',
+                          backgroundSize: '200%',
+                          animation: 'gradientShift 3s infinite linear'
+                        }}
+                      />
+                    </button>
+                    
+                    <style jsx>{`
+                      @keyframes gradientShift {
+                        0% { background-position: 0% 50%; }
+                        100% { background-position: 200% 50%; }
+                      }
+                      
+                      button:hover {
+                        animation: gradientShift 0.8s infinite linear !important;
+                      }
+                      
+                      button:hover div {
+                        animation: gradientShift 0.8s infinite linear !important;
+                      }
+                    `}</style>
+                  </motion.div>
                 </Link>
               </motion.div>
             ))}

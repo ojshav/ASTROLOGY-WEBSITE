@@ -45,8 +45,7 @@ export function UniversalCartButton({
     setIsLoading(true);
     try {
       // Add to frontend cart state first
-      addItem({ id: productId, name: productName, price, image });
-      console.log('Cart items after add:', items);
+      addItem({ id: productId, name: productName, price, image }, quantity);
 
       // Optionally, sync with backend
       const itemType = isStone ? 'stone' : (isService ? 'service' : 'product');

@@ -154,17 +154,19 @@ model user_addresses {
 }
 
 model users {
-  id             Int              @id @default(autoincrement())
-  name           String           @db.VarChar(255)
-  email          String           @unique(map: "email") @db.VarChar(255)
-  password       String           @db.VarChar(255)
-  created_at     DateTime?        @default(now()) @db.Timestamp(0)
-  updated_at     DateTime?        @default(now()) @db.Timestamp(0)
-  google_id      String?          @db.VarChar(255)
-  cart           cart[]
-  orders         orders[]
-  user_addresses user_addresses[]
-  Booking        Booking[]
+  id               Int              @id @default(autoincrement())
+  name             String           @db.VarChar(255)
+  email            String           @unique(map: "email") @db.VarChar(255)
+  password         String           @db.VarChar(255)
+  created_at       DateTime?        @default(now()) @db.Timestamp(0)
+  updated_at       DateTime?        @default(now()) @db.Timestamp(0)
+  google_id        String?          @db.VarChar(255)
+  resetToken       String?          @db.VarChar(255) // For password reset
+  resetTokenExpiry DateTime?        // For password reset expiry
+  cart             cart[]
+  orders           orders[]
+  user_addresses   user_addresses[]
+  Booking          Booking[]
 }
 
 model visitors {
