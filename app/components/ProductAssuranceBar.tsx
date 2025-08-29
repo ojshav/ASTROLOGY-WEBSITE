@@ -50,7 +50,11 @@ export default function ProductAssuranceBar() {
                   <div className="w-8 h-8 md:w-11 md:h-11 flex items-center justify-center mx-auto">
                     {a.icon}
                   </div>
-                  <span className="mt-3 md:mt-5 text-xs md:text-lg font-bold text-black tracking-wide uppercase text-center leading-tight" style={{letterSpacing: '0.08em', fontFamily: 'Playfair Display, serif'}}>{a.label}</span>
+                  <span className="mt-3 md:mt-5 text-xs md:text-lg font-bold text-black tracking-wide uppercase text-center leading-tight mobile-label" style={{letterSpacing: '0.08em', fontFamily: 'Playfair Display, serif'}}>
+                    {a.label.split(' ').map((word, i) => (
+                      <span key={i} className="block md:inline">{word}</span>
+                    ))}
+                  </span>
                 </div>
               </div>
             ))}
@@ -62,18 +66,10 @@ export default function ProductAssuranceBar() {
                   <div className="w-8 h-8 md:w-11 md:h-11 flex items-center justify-center mx-auto">
                     {a.icon}
                   </div>
-                  <span className="mt-3 md:mt-5 text-xs md:text-lg font-bold text-black tracking-wide uppercase text-center leading-tight" style={{letterSpacing: '0.08em', fontFamily: 'Playfair Display, serif'}}>
-                    {a.label === 'AURA TUNED' ? (
-                      <>
-                        <span className="block md:inline">AURA</span>
-                        <span className="block md:inline">TUNED</span>
-                      </>
-                    ) : a.label === 'FREE DELIVERY' ? (
-                      <>
-                        <span className="block md:inline">FREE</span>
-                        <span className="block md:inline">DELIVERY</span>
-                      </>
-                    ) : a.label}
+                  <span className="mt-3 md:mt-5 text-xs md:text-lg font-bold text-black tracking-wide uppercase text-center leading-tight mobile-label" style={{letterSpacing: '0.08em', fontFamily: 'Playfair Display, serif'}}>
+                    {a.label.split(' ').map((word, i) => (
+                      <span key={i} className="block md:inline">{word}</span>
+                    ))}
                   </span>
                 </div>
               </div>

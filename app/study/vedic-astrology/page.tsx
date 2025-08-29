@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { HelpCircle, Star, BookOpen } from 'lucide-react';
 import { FAQSection } from '../../components/FAQSection';
 import { CTASection } from '../../components/CTASection';
-import { Statistics } from '../../components/Statistics';
 import { DrNarendraProfile } from '../../components/DrNarendraProfile';
 
 const tabs = ['Overview', 'Key Components', 'Applications', 'FAQs'];
@@ -107,7 +106,6 @@ export default function VedicAstrology() {
           {/* Dr. Narendra Profile & Statistics */}
           <div className="mt-20 space-y-20">
             <DrNarendraProfile />
-            <Statistics />
           </div>
 
           {/* CTA Section */}

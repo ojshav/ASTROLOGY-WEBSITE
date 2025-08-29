@@ -13,7 +13,6 @@ import {
 // Universal navigation items for all zodiac signs
 export const universalNavigationItems = [
   { id: "about", label: "About", shortLabel: "About", icon: Sparkles },
-  { id: "daily", label: "Daily Insights", shortLabel: "Daily", icon: Star },
   { id: "lucky", label: "Lucky Elements", shortLabel: "Lucky", icon: Gem },
   {
     id: "compatibility",

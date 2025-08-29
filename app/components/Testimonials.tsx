@@ -123,30 +123,30 @@ export function Testimonials() {
   const testimonial = testimonials[current];
 
   return (
-    <section className="relative w-full min-h-[60vh] bg-white overflow-hidden py-20 flex flex-col items-center justify-center px-4 md:px-0">
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+    <section className="relative w-full min-h-[60vh] bg-white overflow-hidden py-10 md:py-12 lg:py-16 flex flex-col items-center justify-center px-4 md:px-6 lg:px-0">
+      <div className="w-full max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="w-full mb-12 flex flex-col items-center"
+          className="w-full mb-4 flex flex-col items-center"
         >
-          <div className="w-full rounded-3xl py-7 px-2 sm:px-4 md:px-10 lg:px-16 mb-8 flex flex-col items-center justify-center shadow-md border border-[#e6c77e]" style={{ backgroundColor: '#FEFBF2' }}>
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold text-black mb-3 text-center drop-shadow-lg tracking-tight">
+          <div className="w-full rounded-3xl py-7 md:py-8 lg:py-10 px-2 sm:px-4 md:px-8 lg:px-16 mb-8 md:mb-10 lg:mb-12 flex flex-col items-center justify-center shadow-md border border-[#e6c77e]" style={{ backgroundColor: '#FEFBF2' }}>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold text-black mb-3 md:mb-4 text-center drop-shadow-lg tracking-tight">
               {t('testimonials.heading') || 'Client Reviews'}
             </h1>
-            <p className="text-base xs:text-lg md:text-2xl text-center max-w-2xl" style={{ color: '#166534' }}>
+            <p className="text-base xs:text-lg md:text-xl lg:text-2xl text-center max-w-2xl md:max-w-3xl" style={{ color: '#166534' }}>
               {t('testimonials.subheading') || 'Read what our clients say about their experiences with our astrology services.'}
             </p>
           </div>
         </motion.div>
         <div className="relative w-full flex items-center justify-center">
-          {/* Left Arrow for all views, styled for mobile/desktop */}
-          <div className="absolute -left-6 md:-left-24 z-10 flex items-center h-full">
+          {/* Left Arrow for all views, styled for mobile/tablet/desktop */}
+          <div className="absolute -left-12 md:-left-8 lg:-left-20 z-10 flex items-center h-full">
             <button
               aria-label="Previous testimonial"
               onClick={() => paginate(-1)}
-              className="flex md:hidden h-10 w-10 md:h-12 md:w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all mx-2"
+              className="flex md:hidden h-10 w-10 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all mx-2"
               style={{ top: '50%', transform: 'translateY(-50%)' }}
             >
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
@@ -154,14 +154,14 @@ export function Testimonials() {
             <button
               aria-label="Previous testimonial"
               onClick={() => paginate(-1)}
-              className="hidden md:flex h-12 w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all"
+              className="hidden md:flex h-11 w-11 lg:h-12 lg:w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all"
               style={{ top: '50%', transform: 'translateY(-50%)' }}
             >
-              <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
+              <svg width="26" height="26" className="lg:w-7 lg:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
             </button>
           </div>
           {/* Testimonial Card with swipe enabled for mobile */}
-          <div className="w-full md:w-[1000px] min-h-[650px] bg-[#f7f7f7] rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden items-stretch mx-4 md:mx-0">
+          <div className="w-full md:w-[800px] lg:w-[1000px] min-h-[650px] md:min-h-[550px] lg:min-h-[650px] bg-[#f7f7f7] rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden items-stretch mx-4 md:mx-2 lg:mx-0">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={current}
@@ -171,7 +171,7 @@ export function Testimonials() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
-                className="flex-1 flex flex-col justify-center px-6 md:px-10 py-24 md:py-32 md:pr-0 md:pl-20"
+                className="flex-1 flex flex-col justify-center px-6 md:px-8 lg:px-10 py-24 md:py-16 lg:py-32 md:pr-0 md:pl-12 lg:pl-20"
                 style={{ minWidth: 0 }}
                 drag={typeof window !== 'undefined' && window.innerWidth < 768 ? 'x' : false}
                 dragConstraints={{ left: 0, right: 0 }}
@@ -194,11 +194,11 @@ export function Testimonials() {
                       ))}
                     </div>
                   </div>
-                  <blockquote className="text-2xl md:text-3xl font-serif font-medium text-black leading-relaxed mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                  <blockquote className="text-2xl md:text-2xl lg:text-3xl font-serif font-medium text-black leading-relaxed mb-8 md:mb-6 lg:mb-8" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                     &ldquo;{testimonial.text}&rdquo;
                   </blockquote>
                   <div className="flex items-center">
-                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
+                    <div className="w-16 h-16 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full overflow-hidden mr-4">
                       <Image
                         src={testimonial.image}
                         alt={testimonial.name}
@@ -208,8 +208,8 @@ export function Testimonials() {
                       />
                     </div>
                     <div>
-                      <div className="font-serif font-bold text-black text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>{testimonial.name}</div>
-                      <div className="text-gray-600 font-medium">{testimonial.occupation}</div>
+                      <div className="font-serif font-bold text-black text-lg md:text-base lg:text-lg" style={{ fontFamily: 'Playfair Display, serif' }}>{testimonial.name}</div>
+                      <div className="text-gray-600 font-medium text-sm md:text-sm lg:text-base">{testimonial.occupation}</div>
                     </div>
                   </div>
                   {testimonial.productUrl && (
@@ -223,12 +223,12 @@ export function Testimonials() {
               </motion.div>
             </AnimatePresence>
           </div>
-          {/* Right Arrow for all views, styled for mobile/desktop */}
-          <div className="absolute -right-6 md:-right-24 z-10 flex items-center h-full">
+          {/* Right Arrow for all views, styled for mobile/tablet/desktop */}
+          <div className="absolute -right-12 md:-right-8 lg:-right-20 z-10 flex items-center h-full">
             <button
               aria-label="Next testimonial"
               onClick={() => paginate(1)}
-              className="flex md:hidden h-10 w-10 md:h-12 md:w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all mx-2"
+              className="flex md:hidden h-10 w-10 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all mx-2"
               style={{ top: '50%', transform: 'translateY(-50%)' }}
             >
               <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
@@ -236,15 +236,15 @@ export function Testimonials() {
             <button
               aria-label="Next testimonial"
               onClick={() => paginate(1)}
-              className="hidden md:flex h-12 w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all"
+              className="hidden md:flex h-11 w-11 lg:h-12 lg:w-12 rounded-full bg-gray-300 hover:bg-gray-400 shadow items-center justify-center transition-all"
               style={{ top: '50%', transform: 'translateY(-50%)' }}
             >
-              <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+              <svg width="26" height="26" className="lg:w-7 lg:h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
         </div>
-        {/* Mobile Navigation Dots */}
-        <div className="flex justify-center mt-8 space-x-2">
+        {/* Navigation Dots */}
+        <div className="flex justify-center mt-8 md:mt-6 lg:mt-8 space-x-2">
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -252,9 +252,8 @@ export function Testimonials() {
                 setDirection(index > current ? 1 : -1);
                 setCurrent(index);
               }}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === current ? 'bg-indigo-600' : 'bg-gray-300'
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${index === current ? 'bg-indigo-600' : 'bg-gray-300'
+                }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}

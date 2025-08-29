@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { FaRegLightbulb, FaRegStar, FaRegGem, FaRegSmile, FaRegHeart, FaRegComments, FaRegSun } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { DrNarendraProfile } from '@/app/components/DrNarendraProfile';
-import { Statistics } from '@/app/components/Statistics';
 import { ContactForm } from '@/app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -158,7 +157,6 @@ export default function CareerGuidancePage() {
         {/* Dr. Narendra Profile & Statistics */}
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         {/* Contact Form CTA */}

@@ -82,54 +82,6 @@ const tabContentMap: Record<string, (data: ZodiacData) => JSX.Element> = {
       </div>
     </div>
   ),
-  daily: (data: ZodiacData) => (
-    <div className="space-y-8">
-      <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full mb-4">
-          {(() => {
-            const Icon = universalNavigationItems[1].icon;
-            return <Icon className="w-8 h-8 text-orange-600" />;
-          })()}
-        </div>
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">{data.daily.title || 'Daily Insights'}</h2>
-      </div>
-      <div className="grid lg:grid-cols-2 gap-8">
-        <div className="space-y-4">
-          <h3 className="text-2xl font-semibold text-gray-800">Today&apos;s Forecast</h3>
-          <p className="text-gray-600 leading-relaxed">{data.daily.forecast?.description}</p>
-          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border border-orange-100">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-orange-600">{data.daily.forecast?.luckyNumber}</p>
-                <p className="text-sm text-gray-600">Lucky Number</p>
-              </div>
-              <div className="text-center">
-                <p className="text-lg font-semibold text-orange-600">{data.daily.forecast?.bestTime}</p>
-                <p className="text-sm text-gray-600">Best Time</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="space-y-4">
-          <h3 className="text-2xl font-semibold text-gray-800">Weekly Focus</h3>
-          <p className="text-gray-600 leading-relaxed">{data.daily.weekly?.description}</p>
-          {/* Define a type for weekly with keyThemes */}
-          {(() => {
-            type WeeklyWithKeyThemes = { keyThemes: string[] };
-            const weekly = data.daily.weekly as WeeklyWithKeyThemes | undefined;
-            return weekly && Array.isArray(weekly.keyThemes) ? (
-              <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border border-orange-100">
-                <h4 className="font-semibold text-gray-800 mb-2">Key Themes</h4>
-                <ul className="space-y-2 text-gray-600">
-                  {weekly.keyThemes.map((theme: string, i: number) => <li key={i}>{'• '}{theme}</li>)}
-                </ul>
-              </div>
-            ) : null;
-          })()}
-        </div>
-      </div>
-    </div>
-  ),
   lucky: (data: ZodiacData) => (
     <div className="space-y-8">
       <div className="text-center">
@@ -328,7 +280,11 @@ export default function ZodiacInfoNavigation({ zodiacSign }: ZodiacInfoNavigatio
         {/* Desktop Tab Navigation */}
         <div className="hidden sm:block mb-8">
           <div className="bg-white rounded-2xl shadow-md p-2 border border-orange-100">
-            <nav className="grid grid-cols-7 gap-0">
+            {/* Dynamically set grid-cols based on navigationItems.length for equal spacing */}
+            <nav
+              className={`grid gap-0 grid-cols-${navigationItems.length}`}
+              style={{ gridTemplateColumns: `repeat(${navigationItems.length}, minmax(0, 1fr))` }}
+            >
               {navigationItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.id;

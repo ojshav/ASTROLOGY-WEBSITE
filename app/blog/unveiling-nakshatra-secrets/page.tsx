@@ -5,7 +5,6 @@ import { useState } from "react"
 import { FaUser, FaCompass, FaHeart, FaCalendarAlt, FaHeartbeat, FaInfinity, FaPrayingHands, FaRocket, FaBalanceScale, FaChild, FaBrain, FaSeedling } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { DrNarendraProfile } from '../../components/DrNarendraProfile';
-import { Statistics } from '../../components/Statistics';
 import { ContactForm } from '../../components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs', 'Book a Reading'];
@@ -245,7 +244,6 @@ export default function NakshatraSecretsPage() {
 
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

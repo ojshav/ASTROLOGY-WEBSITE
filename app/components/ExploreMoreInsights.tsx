@@ -1,15 +1,14 @@
 'use client'
 
-import { CardContent } from '@/components/ui/card'
 import { motion } from 'framer-motion'
-import React from 'react'
 import Image from 'next/image'
-import { useLanguage } from '../contexts/useLanguage'
 import Link from 'next/link'
+import { Card, CardContent } from '@/components/ui/card'
+import { useLanguage } from '../contexts/useLanguage'
 import { CTASection } from './CTASection'
 
-export function LifeChangingSolutions() {
-  const { t } = useLanguage();
+export function ExploreMoreInsights() {
+  const { t } = useLanguage()
 
   return (
     <section className="py-16 bg-white text-black font-sans">
@@ -60,8 +59,10 @@ export function LifeChangingSolutions() {
               </CardContent>
             </motion.div>
 
-            {/* CTA Section Card (replaces Book Your Call Now!) */}
-            <div className="flex items-stretch w-full h-full min-h-[400px] md:min-h-[450px]"><CTASection /></div>
+            {/* CTA Section Card */}
+            <div className="flex items-stretch w-full h-full min-h-[400px] md:min-h-[450px]">
+              <CTASection />
+            </div>
           </div>
         </div>
       </div>

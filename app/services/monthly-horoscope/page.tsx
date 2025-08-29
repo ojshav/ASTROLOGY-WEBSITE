@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CalendarDays, TrendingUp, HeartHandshake, Briefcase, Shield, DollarSign, Target, Lightbulb, Star, Zap, Users, Globe, Award, Compass, Moon, Sun, Crown, Eye, Brain, Infinity, Clock, Gift, Lock, ArrowUpRight, BookOpen, Heart } from 'lucide-react';
 import { DrNarendraProfile } from '../../../app/components/DrNarendraProfile';
-import { Statistics } from '../../../app/components/Statistics';
 import { ContactForm } from '../../../app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -196,7 +195,6 @@ export default function MonthlyHoroscopePage() {
 
                 <div className="mt-20 space-y-20">
                     <DrNarendraProfile />
-                    <Statistics />
                 </div>
 
                 <div className="mt-20">

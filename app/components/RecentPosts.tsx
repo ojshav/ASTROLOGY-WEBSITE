@@ -98,8 +98,8 @@ export default function RecentPosts() {
     <section className="w-full max-w-7xl mx-auto px-4 py-16">
       <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-8">{t('blog.recent.heading')}</h2>
       
-      {/* Desktop View */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+  {/* Desktop View (only on lg+) */}
+  <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         {/* Left Column: Two Featured Blogs */}
         <div className="md:col-span-2 flex flex-col gap-6">
           {/* First Featured Blog - Height matches 2 right blocks */}
@@ -201,8 +201,8 @@ export default function RecentPosts() {
         </div>
       </div>
 
-      {/* Mobile View - Horizontal Scroll */}
-      <div className="md:hidden">
+  {/* Mobile/Tablet View - Horizontal Scroll */}
+  <div className="lg:hidden">
         <div className="relative">
           {/* Navigation Arrows */}
           <button
@@ -241,11 +241,12 @@ export default function RecentPosts() {
           >
             {allPosts.map((post, index) => {
               const isAdditionalPost = index === 1 || index === allPosts.length - 1;
-              
-              return (
-                <div
-                  key={`mobile-${index}`}
-                  className="flex-none w-[calc(52%-6px)] min-w-[170px] snap-start"
+              // Responsive card width: 2 cards on mobile, 4 on tablet, auto on lg+
+              // w-[calc(52%-6px)] for mobile, md:w-[calc(25%-8px)] for tablet
+                return (
+                  <div
+                    key={`mobile-${index}`}
+                    className="flex-none w-[calc(52%-6px)] min-w-[170px] snap-start md:w-[calc(25.5%-8px)] md:min-w-[175px] lg:w-[300px]"
                 >
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden h-[300px] flex flex-col">
                     <div 

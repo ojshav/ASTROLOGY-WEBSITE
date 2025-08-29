@@ -7,7 +7,6 @@ import { useState } from "react"
 import { FaYinYang, FaRegStar, FaRegGem, FaUsers, FaProjectDiagram, FaHeartbeat } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { DrNarendraProfile } from '../../app/components/DrNarendraProfile';
-import { Statistics } from '../../app/components/Statistics';
 import { ContactForm } from '../../app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs', 'Purchase'];
@@ -218,7 +217,6 @@ export function TarotReadingContent() {
 
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

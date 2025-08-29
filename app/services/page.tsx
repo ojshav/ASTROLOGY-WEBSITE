@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Link from 'next/link';
 import { AnimatedStars } from '../components/AnimatedStars'
 import { MysticBackground } from '../components/MysticBackground'
 import dynamic from 'next/dynamic';
@@ -108,8 +109,19 @@ export default function ServicesPage() {
           Embark on a transformative journey with our comprehensive range of spiritual services. Let our expert astrologers and spiritual guides illuminate your path to self-discovery and enlightenment.
         </p>
 
-        {/* Services Search */}
-        <ServicesSearch onSearchChange={setSearch} />
+        {/* Services Search with CTA */}
+  <div className="flex flex-col items-center justify-center gap-3 mb-8 w-full md:gap-3 gap-5">
+          <Link
+            href="/services/all"
+            className="inline-block bg-green-800 hover:bg-green-900 text-white font-semibold px-6 py-3 rounded-full transition-colors duration-200 text-base whitespace-nowrap text-center"
+            style={{ lineHeight: '1.5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          >
+            View All Services
+          </Link>
+          <div className="w-full max-w-md">
+            <ServicesSearch onSearchChange={setSearch} className="mb-0 w-full" />
+          </div>
+        </div>
 
         {/* First 3 cards in horizontal grid
         <UniversalServiceCardGrid
@@ -129,12 +141,12 @@ export default function ServicesPage() {
         />
 
         {/* Service Carousels (Top-Selling Section) */}
-        <div className="mt-16 mb-32">
+        <div className="mt-16 mb-8">
           <ServiceCarousels />
         </div>
 
         {/* Nakshatra Gyaan Banner */}
-        <div className="mt-16 mb-32">
+        <div className="mt-16 mb-8">
           <NakshatraGyaanBanner />
         </div>
 

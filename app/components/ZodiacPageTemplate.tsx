@@ -75,7 +75,7 @@ export default function ZodiacPageTemplate({
         <UniversalZodiacBanner signKey={signKey} />
 
         {/* HORIZONTAL DROPDOWN NAVIGATION */}
-        <ZodiacInfoNavigation zodiacSign={signKey} />
+        <ZodiacInfoNavigation zodiacSign={signKey as 'aquarius' | 'libra' | 'aries' | 'capricorn' | 'gemini' | 'leo' | 'cancer' | 'pisces' | 'sagittarius' | 'scorpio' | 'taurus' | 'virgo'} />
 
         {/* MAIN CONTENT AREA - FULL WIDTH */}
         <motion.div 
@@ -138,7 +138,7 @@ export default function ZodiacPageTemplate({
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, ${theme.glowColor.replace('0.15', '0.05')} 0%, transparent 70%);
+            background: radial-gradient(circle, ${(theme.glowColor ?? 'rgba(249, 115, 22, 0.15)').replace('0.15', '0.05')} 0%, transparent 70%);
             animation: warmGlow 6s ease-in-out infinite alternate;
           }
           
@@ -157,7 +157,7 @@ export default function ZodiacPageTemplate({
               transform: scale(1);
             }
             50% { 
-              box-shadow: 0 0 35px ${theme.animationColor.replace('0.12', '0.25')};
+              box-shadow: 0 0 35px ${(theme.animationColor ?? 'rgba(249, 115, 22, 0.12)').replace('0.12', '0.25')};
               transform: scale(1.008);
             }
           }
@@ -170,7 +170,7 @@ export default function ZodiacPageTemplate({
           .backdrop-blur-glass {
             background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(16px);
-            border: 1px solid ${theme.glowColor.replace('0.15', '0.08')};
+            border: 1px solid ${(theme.glowColor ?? 'rgba(249, 115, 22, 0.15)').replace('0.15', '0.08')};
           }
           
           .warm-gradient {

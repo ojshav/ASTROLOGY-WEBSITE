@@ -5,7 +5,6 @@ import { useState } from "react"
 import { FaPrayingHands, FaGem, FaBurn, FaHandsHelping, FaSeedling, FaShieldAlt, FaSun, FaDonate } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { DrNarendraProfile } from '../../components/DrNarendraProfile';
-import { Statistics } from '../../components/Statistics';
 import { ContactForm } from '../../components/ContactForm';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 
@@ -113,8 +112,6 @@ export default function AstrologicalRemediesPage() {
                 </div>
               </div>
             </div>
-
-            <Statistics />
           </motion.div>
         )}
 

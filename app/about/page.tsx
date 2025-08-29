@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { CTASection } from '../components/CTASection';
 import { DrNarendraProfile } from '../components/DrNarendraProfile';
-import { Statistics } from '../components/Statistics';
 import { ContactForm } from '../components/ContactForm';
 import { useLanguage } from '../contexts/useLanguage';
 
@@ -315,7 +314,6 @@ export default function AboutPage() {
         {/* Additional Components */}
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

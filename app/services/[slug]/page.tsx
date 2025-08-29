@@ -12,7 +12,6 @@ import ServiceCarousels from '@/app/components/ServiceCarousels';
 import NakshatraGyaanBanner from '@/app/components/NakshatraGyaanBanner';
 import SpiritualJourneyBanner from '@/app/components/SpiritualJourneyBanner';
 import { Testimonials } from '@/app/components/Testimonials';
-import { Statistics } from '@/app/components/Statistics';
 import { AboutSummary } from '@/app/components/AboutSummary';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/app/contexts/useLanguage';

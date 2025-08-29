@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { motion } from 'framer-motion';
 import { Baby, Moon, School, Heart, Users, Star, Zap, Shield, Globe, Award, Compass, Target, BookOpen, Sparkles, Gem, Activity, TrendingUp } from 'lucide-react';
 import { DrNarendraProfile } from '@/app/components/DrNarendraProfile';
-import { Statistics } from '@/app/components/Statistics';
 import { ContactForm } from '@/app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -194,7 +193,6 @@ export default function ChildAstrologyPage() {
 
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

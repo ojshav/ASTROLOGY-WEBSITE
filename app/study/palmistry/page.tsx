@@ -5,7 +5,6 @@ import { MysticBackground } from '../../components/MysticBackground';
 import { motion } from 'framer-motion';
 import { FAQSection } from '../../components/FAQSection';
 import { DrNarendraProfile } from '../../components/DrNarendraProfile';
-import { Statistics } from '../../components/Statistics';
 import { ContactForm } from '../../components/ContactForm';
 
 const tabs = ['Overview', 'Key Features', 'How to Read Palms', 'FAQs'];
@@ -110,7 +109,6 @@ export default function PalmistryPage() {
           {/* Dr. Narendra Profile & Statistics */}
           <div className="mt-20 space-y-20">
             <DrNarendraProfile />
-            <Statistics />
           </div>
 
           {/* Contact Form CTA */}

@@ -16,7 +16,7 @@ export function ServicesSearch({ onSearchChange, className = '' }: ServicesSearc
   };
 
   return (
-    <div className={`flex justify-center md:justify-end mb-8 ${className}`}>
+  <div className={`flex justify-center md:justify-end ${className}`}>
       <form
         className="flex w-full max-w-[500px] shadow-md"
         onSubmit={(e) => {

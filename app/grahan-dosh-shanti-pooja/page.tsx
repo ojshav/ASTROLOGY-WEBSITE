@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Shield, Moon, Sun, Star, Zap, Heart, Users, Globe, BookOpen, Award, Compass, TrendingUp, Clock, Target, Lightbulb, Sparkles, Crown, Eye, Brain, Infinity } from 'lucide-react';
 import { DrNarendraProfile } from "../components/DrNarendraProfile";
-import { Statistics } from "../components/Statistics";
 import { ContactForm } from "../components/ContactForm";
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -196,7 +195,6 @@ export default function GrahanDoshShantiPoojaPage() {
         
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

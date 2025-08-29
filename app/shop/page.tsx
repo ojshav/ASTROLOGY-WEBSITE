@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import { products } from '../../data/products';
 
 const ProductOfTheDay = dynamic(() => import('../components/ProductOfTheDay'), { loading: () => <div>Loading...</div>, ssr: false });
-const Statistics = dynamic(() => import('../components/Statistics').then(mod => mod.Statistics), { loading: () => <div>Loading...</div>, ssr: false });
 const CelestialJourneyMainGrid = dynamic(() => import('../components/Hero/CelestialJourneyMainGrid'), { loading: () => <div>Loading...</div>, ssr: false });
 const ShopCategoriesMinimal = dynamic(() => import('../components/ShopCategoriesMinimal'), { loading: () => <div>Loading...</div>, ssr: false });
 const NakshatraTicker = dynamic(() => import('../components/NakshatraTicker'), { loading: () => <div>Loading...</div>, ssr: false });
@@ -81,7 +80,6 @@ export default function ShopPage() {
           {/* Product Of The Day Section */}
           <ProductOfTheDay />
           {/* Astrologer Profile, Statistics, Testimonials */}
-          <Statistics />
           
           {/* Spiritual Journey Banner */}
           <SpiritualJourneyBanner />

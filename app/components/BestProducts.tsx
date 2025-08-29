@@ -55,22 +55,35 @@ export function BestProducts() {
   const checkScrollButtonsMobile = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const isMobile = window.innerWidth < 768; // md breakpoint
+
+      // More sensitive threshold for tablet to allow scrolling when even 1 card is partially hidden
+      const threshold = isMobile ? 1 : 50; // 50px threshold for tablet, 1px for mobile
+
       setCanScrollLeftMobile(scrollLeft > 0);
-      setCanScrollRightMobile(scrollLeft < scrollWidth - clientWidth - 1);
+      setCanScrollRightMobile(scrollLeft < scrollWidth - clientWidth - threshold);
     }
   };
 
   const scrollLeftMobile = () => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.clientWidth / 2;
-      scrollContainerRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      // Responsive scroll distance: mobile shows ~2 cards, tablet shows ~4 cards
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const scrollDistance = isMobile
+        ? scrollContainerRef.current.clientWidth / 2  // Scroll by half width on mobile
+        : scrollContainerRef.current.clientWidth / 3; // Scroll by third width on tablet
+      scrollContainerRef.current.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
     }
   };
 
   const scrollRightMobile = () => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.clientWidth / 2;
-      scrollContainerRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      // Responsive scroll distance: mobile shows ~2 cards, tablet shows ~4 cards
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const scrollDistance = isMobile
+        ? scrollContainerRef.current.clientWidth / 2  // Scroll by half width on mobile
+        : scrollContainerRef.current.clientWidth / 3; // Scroll by third width on tablet
+      scrollContainerRef.current.scrollBy({ left: scrollDistance, behavior: 'smooth' });
     }
   };
 
@@ -87,8 +100,8 @@ export function BestProducts() {
   };
 
   return (
-    <section className="min-h-screen py-16 bg-white font-sans overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="min-h-0 pt-16 pb-0 bg-white font-sans overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 pb-0">
         {/* Banner Section (copied from BestServices.tsx) */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -108,7 +121,7 @@ export function BestProducts() {
         </motion.div>
 
         {/* Products Section */}
-        <div className="mb-12" ref={desktopContainerRef}>
+        <div ref={desktopContainerRef}>
           {/* Header with controls */}
           <div className="mb-6 flex justify-end">
             <div className="flex items-center gap-0">
@@ -118,8 +131,8 @@ export function BestProducts() {
                   View All
                 </button>
               </Link>
-              {/* Desktop navigation arrows (md and up) */}
-              <div className="hidden md:flex items-center gap-2 ml-1">
+              {/* Desktop navigation arrows (lg and up) */}
+              <div className="hidden lg:flex items-center gap-2 ml-1">
                 <button
                   onClick={() => handleScroll('left')}
                   disabled={!canScrollLeftDesktop}
@@ -141,9 +154,9 @@ export function BestProducts() {
           </div>
 
           {/* Responsive Carousel: Desktop (unchanged), Mobile (scrollable like BestServices) */}
-          {/* Desktop/Tablet: show as before */}
-          <div className="hidden md:block">
-            <div 
+          {/* Desktop: show as before */}
+          <div className="hidden lg:block">
+            <div
               className="relative overflow-hidden cursor-grab active:cursor-grabbing"
               style={{
                 width: `${responsiveCardsPerView * (288 + 24) - 24}px`,
@@ -195,15 +208,15 @@ export function BestProducts() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.25, 
-                        delay: index * 0.05, 
-                        type: 'spring', 
-                        stiffness: 300 
+                      transition={{
+                        duration: 0.25,
+                        delay: index * 0.05,
+                        type: 'spring',
+                        stiffness: 300
                       }}
                     >
-                      <ReusableProductCard 
-                        product={product} 
+                      <ReusableProductCard
+                        product={product}
                         viewMode="grid"
                       />
                     </motion.div>
@@ -212,17 +225,16 @@ export function BestProducts() {
               </motion.div>
             </div>
           </div>
-          {/* Mobile: scrollable flexbox, snap, responsive card width, overlay arrows */}
-          <div className="md:hidden">
+          {/* Mobile/Tablet: scrollable flexbox, snap, responsive card width, overlay arrows */}
+          <div className="lg:hidden">
             <div className="relative">
               {/* Navigation Arrows */}
               <button
                 onClick={scrollLeftMobile}
                 disabled={!canScrollLeftMobile}
-                className={`absolute left-0 top-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${
-                  canScrollLeftMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
-                }`}
-                style={{ transform: 'translateY(-50%) translateX(-50%)' }}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${canScrollLeftMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
+                  }`}
+                style={{ marginLeft: '-20px' }}
                 aria-label="Scroll left"
               >
                 <ArrowLeft className="w-4 h-4 text-gray-700" />
@@ -230,10 +242,9 @@ export function BestProducts() {
               <button
                 onClick={scrollRightMobile}
                 disabled={!canScrollRightMobile}
-                className={`absolute right-0 top-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${
-                  canScrollRightMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
-                }`}
-                style={{ transform: 'translateY(-50%) translateX(50%)' }}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${canScrollRightMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
+                  }`}
+                style={{ marginRight: '-20px' }}
                 aria-label="Scroll right"
               >
                 <ArrowRight className="w-4 h-4 text-gray-700" />
@@ -242,7 +253,7 @@ export function BestProducts() {
               <div
                 ref={scrollContainerRef}
                 onScroll={checkScrollButtonsMobile}
-                className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-2"
+                className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-2 mb-1"
                 style={{
                   scrollSnapType: 'x mandatory',
                   scrollbarWidth: 'none',
@@ -253,7 +264,7 @@ export function BestProducts() {
                 {displayProducts.map((product, index) => (
                   <div
                     key={product.id}
-                    className="flex-none w-[calc(52%-6px)] min-w-[170px] snap-start"
+                    className="flex-none w-[calc(52%-6px)] md:w-[calc(26%-9px)] min-w-[170px] md:min-w-[190px] snap-start"
                   >
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}

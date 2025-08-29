@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Heart, Users, Star, Shield, Search, GitCompareArrows, Handshake, Sparkles, MessageCircle, HeartCrack, BookOpen, KeyRound, Link, Home, DollarSign, HeartHandshake, Users2, Undo2, Briefcase, TrendingUp, CalendarCheck } from 'lucide-react';
 import { DrNarendraProfile } from '../components/DrNarendraProfile';
-import { Statistics } from '../components/Statistics';
 import { ContactForm } from '../components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -196,7 +195,6 @@ export default function KundaliMatchingPage() {
         
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

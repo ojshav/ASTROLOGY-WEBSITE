@@ -54,22 +54,35 @@ export function BestServices() {
   const checkScrollButtonsMobile = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const isMobile = window.innerWidth < 768; // md breakpoint
+
+      // More sensitive threshold for tablet to allow scrolling when even 1 card is partially hidden
+      const threshold = isMobile ? 1 : 50; // 50px threshold for tablet, 1px for mobile
+
       setCanScrollLeftMobile(scrollLeft > 0);
-      setCanScrollRightMobile(scrollLeft < scrollWidth - clientWidth - 1);
+      setCanScrollRightMobile(scrollLeft < scrollWidth - clientWidth - threshold);
     }
   };
 
   const scrollLeftMobile = () => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.clientWidth / 2;
-      scrollContainerRef.current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+      // Responsive scroll distance: mobile shows ~2 cards, tablet shows ~4 cards
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const scrollDistance = isMobile
+        ? scrollContainerRef.current.clientWidth / 2  // Scroll by half width on mobile
+        : scrollContainerRef.current.clientWidth / 3; // Scroll by third width on tablet
+      scrollContainerRef.current.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
     }
   };
 
   const scrollRightMobile = () => {
     if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.clientWidth / 2;
-      scrollContainerRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      // Responsive scroll distance: mobile shows ~2 cards, tablet shows ~4 cards
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const scrollDistance = isMobile
+        ? scrollContainerRef.current.clientWidth / 2  // Scroll by half width on mobile
+        : scrollContainerRef.current.clientWidth / 3; // Scroll by third width on tablet
+      scrollContainerRef.current.scrollBy({ left: scrollDistance, behavior: 'smooth' });
     }
   };
 
@@ -86,8 +99,8 @@ export function BestServices() {
   };
 
   return (
-    <section className="min-h-screen py-16 bg-white font-sans overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="min-h-[400px] py-0 bg-white font-sans overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4">
 
         {/* Banner Section */}
         <motion.div
@@ -108,18 +121,18 @@ export function BestServices() {
         </motion.div>
 
         {/* Services Section */}
-  <div className="mb-12" ref={desktopContainerRef}>
+        <div className="mb-12" ref={desktopContainerRef}>
           {/* Header with controls (desktop: includes nav arrows) */}
           <div className="mb-6 flex justify-end">
             <div className="flex items-center gap-0">
               {/* View All Button */}
               <Link href="/services/all">
                 <button className="px-6 py-3 text-black font-semibold rounded-xl hover:text-green-800 transition-colors duration-200 flex items-center gap-2">
-                  View All 
+                  View All
                 </button>
               </Link>
-              {/* Desktop navigation arrows (md and up) */}
-              <div className="hidden md:flex items-center gap-2 ml-1">
+              {/* Desktop navigation arrows (lg and up) */}
+              <div className="hidden lg:flex items-center gap-2 ml-1">
                 <button
                   onClick={() => handleScroll('left')}
                   disabled={!canScrollLeftDesktop}
@@ -137,14 +150,14 @@ export function BestServices() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-              
+
             </div>
           </div>
 
-          {/* Responsive Carousel: Desktop (unchanged), Mobile (scrollable like LifeChangingSolutions) */}
-          {/* Desktop/Tablet: show as before, but nav arrows are now in header */}
-          <div className="hidden md:block">
-            <div 
+          {/* Responsive Carousel: Desktop (unchanged), Mobile (scrollable) */}
+          {/* Desktop: show as before, but nav arrows are now in header */}
+          <div className="hidden lg:block">
+            <div
               className="relative overflow-hidden cursor-grab active:cursor-grabbing"
               style={{
                 width: `${responsiveCardsPerView * (288 + 24) - 24}px`,
@@ -195,15 +208,15 @@ export function BestServices() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.25, 
-                        delay: index * 0.05, 
-                        type: 'spring', 
-                        stiffness: 300 
+                      transition={{
+                        duration: 0.25,
+                        delay: index * 0.05,
+                        type: 'spring',
+                        stiffness: 300
                       }}
                     >
-                      <ReusableServiceCard 
-                        service={service} 
+                      <ReusableServiceCard
+                        service={service}
                         viewMode="grid"
                         className="h-full"
                       />
@@ -213,16 +226,15 @@ export function BestServices() {
               </motion.div>
             </div>
           </div>
-          {/* Mobile: scrollable flexbox, snap, responsive card width, overlay arrows */}
-          <div className="md:hidden">
+          {/* Mobile/Tablet: scrollable flexbox, snap, responsive card width, overlay arrows */}
+          <div className="lg:hidden">
             <div className="relative">
               {/* Navigation Arrows */}
               <button
                 onClick={scrollLeftMobile}
                 disabled={!canScrollLeftMobile}
-                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${
-                  canScrollLeftMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
-                }`}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${canScrollLeftMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
+                  }`}
                 style={{ marginLeft: '-20px' }}
                 aria-label="Scroll left"
               >
@@ -231,9 +243,8 @@ export function BestServices() {
               <button
                 onClick={scrollRightMobile}
                 disabled={!canScrollRightMobile}
-                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${
-                  canScrollRightMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
-                }`}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center transition-opacity border border-gray-300 ${canScrollRightMobile ? 'opacity-100 hover:bg-gray-50' : 'opacity-50 cursor-not-allowed'
+                  }`}
                 style={{ marginRight: '-20px' }}
                 aria-label="Scroll right"
               >
@@ -254,7 +265,7 @@ export function BestServices() {
                 {displayServices.map((service, index) => (
                   <div
                     key={service.slug}
-                    className="flex-none w-[calc(52%-6px)] min-w-[170px] snap-start"
+                    className="flex-none w-[calc(52%-6px)] md:w-[calc(26%-9px)] min-w-[170px] md:min-w-[190px] snap-start"
                   >
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}

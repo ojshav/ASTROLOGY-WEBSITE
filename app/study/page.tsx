@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { BookOpen, Star, Moon, Sun, HelpCircle, Users, Target, Award, Globe, Heart, Shield, Sparkles, Zap, Compass, Gem, Activity, TrendingUp, ArrowUpRight } from 'lucide-react';
 import { CTASection } from '../components/CTASection';
 import { DrNarendraProfile } from '../components/DrNarendraProfile';
-import { Statistics } from '../components/Statistics';
 import { ContactForm } from '../components/ContactForm';
 import { useLanguage } from '../contexts/useLanguage';
 
@@ -356,7 +355,6 @@ export default function StudyPage() {
         {/* Additional Components */}
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

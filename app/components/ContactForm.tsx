@@ -120,7 +120,7 @@ export function ContactForm() {
 
       <div className="max-w-6xl mx-auto px-5 relative z-20">
         {/* Header section matching footer style */}
-        <div className="text-center mb-16 mt-20">
+  <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
             {t('contact.header.title1')}<br />
             <span className="bg-gradient-to-r from-violet-500 to-pink-500 bg-clip-text text-transparent">{t('contact.header.title2')}</span>
@@ -159,7 +159,7 @@ export function ContactForm() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-1">{t('contact.info.emailTitle')}</h3>
-                  <p className="text-gray-300 text-lg">support@anytimenakshatra.com</p>
+                  <p className="text-gray-300 text-m">support@anytimenakshatra.com</p>
                   <p className="text-sm text-gray-400">{t('contact.info.emailNote')}</p>
                 </div>
               </div>
@@ -250,9 +250,9 @@ export function ContactForm() {
         </div>
 
         {/* Large brand name matching footer */}
-        <div className="text-center mt-20 mb-12">
+        {/* <div className="text-center mt-20 mb-12">
           <h1 className="text-[48px] md:text-[64px] font-bold text-white/10 tracking-wider m-0 select-none">{t('contact.brand')}</h1>
-        </div>
+        </div> */}
       </div>
     </section>
   )

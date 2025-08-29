@@ -92,6 +92,11 @@ export default {
       },
       screens: {
         'xs': '475px',
+        // Keep default sm: 640px and md: 768px
+        // Push lg breakpoint higher so iPad Pro, Nest Hub, Nest Hub Max stay in tablet mode
+        'lg': '1367px', // Start desktop layouts after these devices
+        'xl': '1536px', // Keep default xl
+        '2xl': '1536px', // Keep default 2xl
       },
       transitionDelay: {
         '75': '75ms',

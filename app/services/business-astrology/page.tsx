@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { motion } from 'framer-motion';
 import { Building, Handshake, TrendingUp, Shield, Lightbulb, Gem, Star, Zap, Users, Globe, Award, Compass, Target, BookOpen, Sparkles, DollarSign, Briefcase, Crown, Eye, Brain, Infinity, Clock, Gift, Lock, ArrowUpRight, TrendingDown } from 'lucide-react';
 import { DrNarendraProfile } from '@/app/components/DrNarendraProfile';
-import { Statistics } from '@/app/components/Statistics';
 import { ContactForm } from '@/app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -194,7 +193,6 @@ export default function BusinessAstrologyPage() {
 
         <div className="mt-20 space-y-20">
           <DrNarendraProfile />
-          <Statistics />
         </div>
 
         <div className="mt-20">

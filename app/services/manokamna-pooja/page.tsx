@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, TrendingUp, Heart, Briefcase, Home, Shield, BookOpen, HeartHandshake, Star, Zap, Users, Globe, Award, Compass, Target, Lightbulb, Moon, Sun, Crown, Eye, Brain, Infinity, Calendar, Gift, Lock, ArrowUpRight } from 'lucide-react';
 import { DrNarendraProfile } from '../../../app/components/DrNarendraProfile';
-import { Statistics } from '../../../app/components/Statistics';
 import { ContactForm } from '../../../app/components/ContactForm';
 
 const tabs = ['Overview', 'Benefits', 'FAQs'];
@@ -194,7 +193,6 @@ export default function ManokamnaPujaPage() {
 
                 <div className="mt-20 space-y-20">
                     <DrNarendraProfile />
-                    <Statistics />
                 </div>
 
                 <div className="mt-20">

@@ -26,7 +26,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-black text-white py-20 overflow-hidden">
       {/* Floating decorative cards */}
-      <Link href="/blog/astrology-remedies-for-life" className="hidden md:block absolute top-10 left-10 rotate-[-12deg] opacity-90 z-10 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
+      <Link href="/blog/astrology-remedies-for-life" className="hidden lg:block absolute top-10 left-10 rotate-[-12deg] opacity-90 z-10 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
         <div className="bg-gradient-to-br from-violet-500 via-pink-500 to-orange-400 rounded-2xl p-6 w-72 shadow-2xl">
           <div className="bg-black/20 rounded-md px-3 py-1 text-xs text-white mb-4 inline-block">{t('footer.floatingCards.card1.tag')}</div>
           <h3 className="text-white font-bold text-lg mb-2 leading-snug">{t('footer.floatingCards.card1.title')}</h3>
@@ -38,7 +38,7 @@ export default function Footer() {
           <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium border-none cursor-pointer transition-all hover:bg-white/30 inline-block">{t('footer.floatingCards.card1.button')}</span>
         </div>
       </Link>
-      <Link href="/blog/the-influence-of-planets" className="hidden md:block absolute top-16 right-10 rotate-[12deg] opacity-90 z-10 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
+      <Link href="/blog/the-influence-of-planets" className="hidden lg:block absolute top-16 right-10 rotate-[12deg] opacity-90 z-10 cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out">
         <div className="bg-gradient-to-br from-blue-500 via-teal-400 to-green-400 rounded-2xl p-6 w-72 shadow-2xl">
           <div className="bg-black/20 rounded-md px-3 py-1 text-xs text-white mb-4 inline-block">{t('footer.floatingCards.card2.tag')}</div>
           <h3 className="text-white font-bold text-lg mb-2 leading-snug">{t('footer.floatingCards.card2.title')}</h3>
@@ -141,7 +141,7 @@ export default function Footer() {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-20 right-5 bg-gradient-to-r from-violet-500 to-pink-500 text-white p-3 rounded-full shadow-xl z-50 transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-violet-300"
+        className="fixed bottom-20 right-5 bg-gradient-to-r from-green-800 via-green-600 to-green-500 text-white p-3 rounded-full shadow-xl z-50 transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-300"
         aria-label={t('footer.scrollToTop')}
       >
         <ArrowUp size={24} />

@@ -124,22 +124,21 @@ export default function OrdersPage() {
       <AnimatedStars />
       <MysticBackground />
       <div className="container mx-auto pt-32 px-4 py-16 relative z-10">
-        <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-center text-mystic-brown">
+        <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-center text-neutral-900">
           Your Orders
         </h1>
-        
         <div className="max-w-5xl mx-auto">
-          <Card className="bg-midnight-blue-light/80 border border-gold/30">
+          <Card className="bg-white/90 border border-gold/30">
             <CardHeader>
-              <CardTitle className="text-2xl font-serif text-gold">Order History</CardTitle>
-              <CardDescription className="text-lavender/80">
+              <CardTitle className="text-2xl font-serif text-neutral-900">Order History</CardTitle>
+              <CardDescription className="text-neutral-700">
                 Track and view details of all your previous orders
               </CardDescription>
             </CardHeader>
             <CardContent>
               {orders.length === 0 ? (
                 <div className="text-center p-8">
-                  <p className="text-lg text-lavender mb-4">You haven&apos;t placed any orders yet</p>
+                  <p className="text-lg text-neutral-700 mb-4">You haven&apos;t placed any orders yet</p>
                   <Button 
                     onClick={() => router.push('/shop')}
                     className="bg-black text-white hover:bg-gray-800"
@@ -150,7 +149,7 @@ export default function OrdersPage() {
               ) : (
                 <div className="space-y-6">
                   {orders.map((order) => (
-                    <Card key={order.id} className="border border-gold/20 bg-midnight-blue/40">
+                    <Card key={order.id} className="border border-gold/20 bg-white/80">
                       <CardContent className="p-6">
                         <div 
                           className="flex flex-col md:flex-row justify-between items-start md:items-center cursor-pointer"
@@ -158,22 +157,22 @@ export default function OrdersPage() {
                         >
                           <div className="flex-1">
                             <div className="flex items-center">
-                              <h4 className="text-gold font-medium">
+                              <h4 className="text-neutral-900 font-medium">
                                 {formatDate(order.created_at)}
                               </h4>
                               <span className={`ml-4 px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
                                 {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                               </span>
                             </div>
-                            <p className="text-lavender/80 text-sm">
+                            <p className="text-neutral-700 text-sm">
                               {order.items.length} {order.items.length === 1 ? 'item' : 'items'}
                             </p>
                           </div>
                           <div className="mt-2 md:mt-0 flex items-center">
-                            <span className="text-gold font-medium text-lg">
+                            <span className="text-neutral-900 font-medium text-lg">
                               ₹{order.total_amount.toLocaleString('en-IN')}
                             </span>
-                            <span className="ml-3 text-lavender">
+                            <span className="ml-3 text-neutral-700">
                               {activeOrderId === order.id ? 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                   <polyline points="18 15 12 9 6 15"></polyline>
@@ -185,44 +184,42 @@ export default function OrdersPage() {
                             </span>
                           </div>
                         </div>
-                        
                         {activeOrderId === order.id && (
                           <div className="mt-6 border-t border-gold/10 pt-4">
                             <div className="flex justify-between mb-3">
-                              <h5 className="text-lavender font-medium">Order Details</h5>
-                              <p className="text-lavender/80 text-sm">
+                              <h5 className="text-neutral-900 font-medium">Order Details</h5>
+                              <p className="text-neutral-700 text-sm">
                                 Placed on {formatDateWithTime(order.created_at)}
                               </p>
                             </div>
                             <Table>
                               <TableHeader>
                                 <TableRow>
-                                  <TableHead className="text-lavender">Item</TableHead>
-                                  <TableHead className="text-lavender text-right">Quantity/Carats</TableHead>
-                                  <TableHead className="text-lavender text-right">Price</TableHead>
+                                  <TableHead className="text-neutral-900">Item</TableHead>
+                                  <TableHead className="text-neutral-900 text-right">Quantity/Carats</TableHead>
+                                  <TableHead className="text-neutral-900 text-right">Price</TableHead>
                                 </TableRow>
                               </TableHeader>
                               <TableBody>
                                 {order.items.map((item, idx) => (
                                   <TableRow key={idx}>
-                                    <TableCell className="text-lavender font-medium">
+                                    <TableCell className="text-neutral-900 font-medium">
                                       {item.product_name}
                                     </TableCell>
-                                    <TableCell className="text-lavender text-right">
+                                    <TableCell className="text-neutral-700 text-right">
                                       {item.is_stone ? `${item.carats} carats` : item.quantity}
                                     </TableCell>
-                                    <TableCell className="text-gold text-right">
+                                    <TableCell className="text-neutral-900 text-right">
                                       ₹{item.price.toLocaleString('en-IN')}
                                     </TableCell>
                                   </TableRow>
                                 ))}
                               </TableBody>
                             </Table>
-                            
                             <div className="flex justify-end mt-4 space-x-4">
                               <Button 
                                 variant="outline" 
-                                className="border-lavender/30 text-lavender hover:bg-lavender/10"
+                                className="border-neutral-400 text-neutral-900 hover:bg-neutral-100"
                                 onClick={() => router.push(`/orders/${order.id}`)}
                               >
                                 View Full Details
@@ -250,11 +247,10 @@ export default function OrdersPage() {
                   ))}
                 </div>
               )}
-              
               <div className="flex justify-between items-center mt-8">
                 <Button 
                   variant="outline" 
-                  className="border-lavender/30 text-lavender hover:bg-lavender/10"
+                  className="border-neutral-400 text-neutral-900 hover:bg-neutral-100"
                   onClick={() => router.push('/profile')}
                 >
                   Back to Profile

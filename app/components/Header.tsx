@@ -174,7 +174,7 @@ export function Header() {
   return (
     <>
       <div
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-4 py-2 md:hidden"
+  className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-4 py-2 lg:hidden"
         style={{ background: '#FEFBF2' }}
       >
         {/* Left: Logo */}
@@ -241,10 +241,10 @@ export function Header() {
         </div>
       </div>
       {/* Spacer for fixed mobile header and nav bar */}
-      <div className="md:hidden" style={{ height: '104px' }} />
+  <div className="lg:hidden" style={{ height: '104px' }} />
       {/* Mobile horizontal nav bar (below top bar) */}
       <div
-        className="fixed top-[56px] left-0 right-0 z-50 md:hidden w-full flex justify-center items-center gap-2 px-2 py-2"
+  className="fixed top-[56px] left-0 right-0 z-50 lg:hidden w-full flex justify-center items-center gap-2 px-2 py-2"
         style={{ background: '#FEFBF2', boxShadow: '0 2px 8px 0 rgba(36,34,68,0.04)' }}
       >
         {/* Consultations dropdown trigger */}
@@ -449,7 +449,7 @@ export function Header() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="sticky top-0 left-0 right-0 w-full z-50 shadow-lg hidden md:block"
+  className="sticky top-0 left-0 right-0 w-full z-50 shadow-lg hidden lg:block"
         style={{
           background: "#FEFBF2",
           boxShadow: "0 4px 24px 0 rgba(36, 34, 68, 0.08)",
@@ -1003,7 +1003,7 @@ export function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white z-[999] shadow-2xl flex flex-col p-6 gap-6 md:hidden overflow-y-auto max-h-screen"
+            className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-white z-[999] shadow-2xl flex flex-col p-6 gap-6 lg:hidden overflow-y-auto max-h-screen"
           >
             {/* Search Bar at the top of sidebar - REMOVED */}
             {/* <form onSubmit={handleSearchSubmit} className="mb-4 w-full"> ... </form> */}
