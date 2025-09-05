@@ -4,7 +4,7 @@ export default function CartLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="mt-[40px] lg:mt-[60px]">
+    <div>
       {children}
     </div>
   )

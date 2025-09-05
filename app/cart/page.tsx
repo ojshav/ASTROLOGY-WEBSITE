@@ -1,13 +1,14 @@
 'use client'
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Trash2, ShoppingBag, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useCart } from '../contexts/CartContext';
 import { useLanguage } from '../contexts/useLanguage';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { AnimatedStars } from '@/app/components/AnimatedStars';
+import { MysticBackground } from '@/app/components/MysticBackground';
 
 // Database cart item structure
 interface DatabaseCartItem {
@@ -175,10 +176,13 @@ export default function CartPage() {
 
   if (isLoading) {
     return (
-      <div className="w-full max-w-7xl mx-auto p-8 flex items-center justify-center">
-        <div className="flex items-center gap-2">
-          <Loader2 className="h-6 w-6 animate-spin" />
-          <span>Loading cart...</span>
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-golden-amber-dark via-sunburst-yellow to-golden-amber-dark">
+        <AnimatedStars />
+        <MysticBackground />
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gold"></div>
+          </div>
         </div>
       </div>
     );
@@ -186,230 +190,267 @@ export default function CartPage() {
 
   if (error) {
     return (
-      <div className="w-full max-w-7xl mx-auto p-8">
-        <Card className="rounded-2xl border border-gray-200" style={{ background: '#fefbf2' }}>
-          <CardContent className="flex flex-col items-center justify-center py-12">
-            <p className="text-red-500 mb-4">{error}</p>
-            <Button onClick={() => window.location.reload()}>Retry</Button>
-          </CardContent>
-        </Card>
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-golden-amber-dark via-sunburst-yellow to-golden-amber-dark">
+        <AnimatedStars />
+        <MysticBackground />
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="bg-white/95 rounded-2xl p-12 text-center shadow-lg max-w-md mx-auto">
+            <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-neutral-900 mb-2">Error Loading Cart</h3>
+            <p className="text-neutral-600 mb-6">{error}</p>
+            <Button 
+              onClick={() => window.location.reload()}
+              className="bg-green-800 hover:bg-green-900 text-white rounded-xl px-6 py-3 shadow-lg"
+            >
+              Retry
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
 
   if (!isAuthenticated) {
     return (
-      <div className="w-full max-w-7xl mx-auto p-8">
-        <Card className="rounded-2xl border border-gray-200" style={{ background: '#fefbf2' }}>
-          <CardContent className="flex flex-col items-center justify-center py-12">
-            <h2 className="text-2xl font-semibold mb-4">Please Log In</h2>
-            <p className="text-gray-600 mb-6">You need to be logged in to view your cart.</p>
-            <Button asChild>
+      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-golden-amber-dark via-sunburst-yellow to-golden-amber-dark">
+        <AnimatedStars />
+        <MysticBackground />
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="bg-white/95 rounded-2xl p-12 text-center shadow-lg max-w-md mx-auto">
+            <div className="w-16 h-16 mx-auto mb-4 bg-neutral-100 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-neutral-900 mb-2">Please Log In</h3>
+            <p className="text-neutral-600 mb-6">You need to be logged in to view your cart.</p>
+            <Button 
+              asChild
+              className="bg-green-800 hover:bg-green-900 text-white rounded-xl px-6 py-3 shadow-lg"
+            >
               <Link href="/signin">Sign In</Link>
             </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-0 sm:p-4 md:p-8">
-      
-      {items.length === 0 ? (
-        <div className="w-full max-w-4xl mx-auto p-0 sm:p-4">
-          <Card className="rounded-2xl border border-gray-200" style={{ background: '#fefbf2' }}>
-            <CardContent className="flex flex-col items-center justify-center py-12 sm:py-16" style={{ background: '#fefbf2' }}>
-              <ShoppingBag className="h-16 w-16 text-black mb-4" />
-              <h2 className="text-2xl font-semibold mb-2">{t('cart.empty')}</h2>
-              <p className="text-gray-600 mb-6">{t('cart.emptyDescription') || t('cart.description')}</p>
-              <Button asChild className="rounded-lg px-6 py-2 text-base font-semibold">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-golden-amber-dark via-sunburst-yellow to-golden-amber-dark">
+      <AnimatedStars />
+      <MysticBackground />
+      <div className="container mx-auto px-4 py-16 relative z-10">
+        
+        {items.length === 0 ? (
+          <div className="max-w-md mx-auto">
+            <div className="bg-white/95 rounded-2xl p-12 text-center shadow-lg">
+              <div className="w-16 h-16 mx-auto mb-4 bg-neutral-100 rounded-full flex items-center justify-center">
+                <ShoppingBag className="h-8 w-8 text-neutral-400" />
+              </div>
+              <h2 className="text-2xl font-semibold mb-2 text-neutral-900">{t('cart.empty')}</h2>
+              <p className="text-neutral-600 mb-6">{t('cart.emptyDescription') || t('cart.description')}</p>
+              <Button 
+                asChild 
+                className="bg-green-800 hover:bg-green-900 text-white rounded-xl px-8 py-3 shadow-lg"
+              >
                 <Link href="/">{t('cart.continueShopping')}</Link>
               </Button>
-            </CardContent>
-          </Card>
-        </div>
-      ) : (
-        <div className="text-black grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-0">
-          {/* Cart Items */}
-          <div className="lg:col-span-2">
-            <Card className="rounded-2xl border border-gray-200 mt-0" style={{ background: '#fefbf2' }}>
-              <CardContent className="p-0" style={{ background: '#fefbf2' }}>
-                <div className="p-4 sm:p-6 pb-0 flex flex-col sm:flex-row items-center sm:items-center gap-2">
-                  <span className="text-xl sm:text-2xl font-bold flex items-center gap-2">
-                    <ShoppingBag className="h-6 w-6 mr-1" /> 
-                    {t('cart.yourCart')} 
-                    <span className="font-normal text-base sm:text-lg">
-                      ({items.length} {items.length === 1 ? t('cart.item') : t('cart.items')})
-                    </span>
-                  </span>
-                </div>
-                <div className="divide-y divide-gray-200">
-                  {items.map((item) => {
-                    // Type guard to check if item is a database cart item
-                    const isDatabaseItem = 'products' in item || 'services' in item;
-                    
-                    // Handle both database cart items and local items
-                    const itemName = isDatabaseItem 
-                      ? (item as DatabaseCartItem).products?.name || (item as DatabaseCartItem).services?.title
-                      : (item as LocalCartItem).name;
-                    
-                    const itemPrice = isDatabaseItem
-                      ? (item as DatabaseCartItem).products?.price || (item as DatabaseCartItem).services?.price
-                      : (item as LocalCartItem).price;
-                    
-                    // Improved image URL extraction
-                    let itemImage: string | undefined;
-                    if (isDatabaseItem) {
-                      const dbItem = item as DatabaseCartItem;
-                      if (dbItem.products?.product_media && dbItem.products.product_media.length > 0) {
-                        // For products, get image from product_media
-                        // Try to find primary image first, then fallback to first available
-                        const primaryImage = dbItem.products.product_media.find(media => media.is_primary);
-                        itemImage = primaryImage?.media_url || dbItem.products.product_media[0].media_url;
-                        console.log('Product image found:', itemImage);
-                      } else if (dbItem.products?.image_url) {
-                        // Fallback to old image_url field
-                        itemImage = dbItem.products.image_url;
-                        console.log('Product image_url fallback:', itemImage);
-                      } else if (dbItem.services?.service_media && dbItem.services.service_media.length > 0) {
-                        // For services, get image from service_media
-                        // Try to find primary image first, then fallback to first available
-                        const primaryImage = dbItem.services.service_media.find(media => media.is_primary);
-                        itemImage = primaryImage?.media_url || dbItem.services.service_media[0].media_url;
-                        console.log('Service image found:', itemImage);
-                      } else {
-                        console.log('No image found for item:', dbItem);
-                      }
-                    } else {
-                      itemImage = (item as LocalCartItem).image || (item as LocalCartItem).image_url;
-                      console.log('Local item image:', itemImage);
-                    }
-                    
-                    const itemId = item.id;
-                    const itemQuantity = item.quantity;
+            </div>
+          </div>
+        ) : (
+          <div className="max-w-6xl mx-auto">
+            {/* Page Header */}
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-neutral-900">
+                Shopping Cart
+              </h1>
+              <p className="text-lg text-neutral-700">
+                {items.length} {items.length === 1 ? t('cart.item') : t('cart.items')} in your cart
+              </p>
+            </div>
 
-                    return (
-                      <div key={itemId} className="flex flex-col xs:flex-row items-center xs:items-start gap-4 p-4 sm:p-6">
-                        <div className="relative h-20 w-20 min-w-[80px] min-h-[80px] rounded-lg overflow-hidden bg-gray-100 border mx-auto xs:mx-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Cart Items */}
+              <div className="lg:col-span-2 space-y-4">
+                {items.map((item) => {
+                  // Type guard to check if item is a database cart item
+                  const isDatabaseItem = 'products' in item || 'services' in item;
+                  
+                  // Handle both database cart items and local items
+                  const itemName = isDatabaseItem 
+                    ? (item as DatabaseCartItem).products?.name || (item as DatabaseCartItem).services?.title
+                    : (item as LocalCartItem).name;
+                  
+                  const itemPrice = isDatabaseItem
+                    ? (item as DatabaseCartItem).products?.price || (item as DatabaseCartItem).services?.price
+                    : (item as LocalCartItem).price;
+                  
+                  // Improved image URL extraction
+                  let itemImage: string | undefined;
+                  if (isDatabaseItem) {
+                    const dbItem = item as DatabaseCartItem;
+                    if (dbItem.products?.product_media && dbItem.products.product_media.length > 0) {
+                      const primaryImage = dbItem.products.product_media.find(media => media.is_primary);
+                      itemImage = primaryImage?.media_url || dbItem.products.product_media[0].media_url;
+                    } else if (dbItem.products?.image_url) {
+                      itemImage = dbItem.products.image_url;
+                    } else if (dbItem.services?.service_media && dbItem.services.service_media.length > 0) {
+                      const primaryImage = dbItem.services.service_media.find(media => media.is_primary);
+                      itemImage = primaryImage?.media_url || dbItem.services.service_media[0].media_url;
+                    }
+                  } else {
+                    itemImage = (item as LocalCartItem).image || (item as LocalCartItem).image_url;
+                  }
+                  
+                  const itemId = item.id;
+                  const itemQuantity = item.quantity;
+
+                  return (
+                    <div key={itemId} className="bg-white/95 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                      <div className="flex items-start gap-4">
+                        {/* Product Image */}
+                        <div className="relative h-20 w-20 min-w-[80px] min-h-[80px] rounded-xl overflow-hidden bg-neutral-100">
                           {itemImage ? (
                             <img src={itemImage} alt={itemName || 'Item'} className="object-cover w-full h-full" />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
+                            <div className="w-full h-full flex items-center justify-center text-neutral-400">
+                              <ShoppingBag className="h-8 w-8" />
+                            </div>
                           )}
                         </div>
-                        <div className="flex-1 w-full min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+
+                        {/* Product Details */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex justify-between items-start mb-2">
                             <div>
-                              <h3 className="font-bold text-base sm:text-lg md:text-xl text-black truncate">{itemName || 'Unnamed Item'}</h3>
-                              <div className="flex gap-2 text-xs sm:text-sm text-gray-500 mt-1">
-                                {/* Show item type */}
-                                <span className="capitalize">
-                                  {isDatabaseItem 
-                                    ? ((item as DatabaseCartItem).products ? 'Product' : 'Service')
-                                    : 'Item'
-                                  }
-                                </span>
-                              </div>
+                              <h3 className="font-semibold text-lg text-neutral-900 truncate">{itemName || 'Unnamed Item'}</h3>
+                              <p className="text-sm text-neutral-600 capitalize">
+                                {isDatabaseItem 
+                                  ? ((item as DatabaseCartItem).products ? 'Product' : 'Service')
+                                  : 'Item'
+                                }
+                              </p>
                             </div>
                             <Button
                               variant="ghost"
                               size="sm"
                               onClick={() => removeItem(itemId)}
-                              className="text-gray-400 hover:text-red-500"
+                              className="text-neutral-400 hover:text-red-500 hover:bg-red-50 rounded-lg"
                               title={t('cart.remove')}
                             >
                               <Trash2 className="h-5 w-5" />
                             </Button>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2 gap-2">
-                            <div className="flex items-center gap-2 justify-center sm:justify-start">
+
+                          {/* Quantity and Price Controls */}
+                          <div className="flex items-center justify-between mt-4">
+                            <div className="flex items-center gap-3">
                               <button
-                                className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center border border-gray-300 rounded bg-white text-black text-lg sm:text-xl disabled:opacity-50"
+                                className="w-10 h-10 flex items-center justify-center border border-neutral-300 rounded-lg bg-white hover:bg-neutral-50 text-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed"
                                 onClick={() => updateQuantity(itemId, itemQuantity - 1)}
                                 disabled={itemQuantity <= 1}
                                 aria-label="Decrease quantity"
                               >
-                                -
+                                −
                               </button>
-                              <span className="w-8 text-center text-base sm:text-lg font-medium">{itemQuantity}</span>
+                              <span className="w-12 text-center text-lg font-medium text-neutral-900">{itemQuantity}</span>
                               <button
-                                className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center border border-gray-300 rounded bg-white text-black text-lg sm:text-xl"
+                                className="w-10 h-10 flex items-center justify-center border border-neutral-300 rounded-lg bg-white hover:bg-neutral-50 text-neutral-700"
                                 onClick={() => updateQuantity(itemId, itemQuantity + 1)}
                                 aria-label="Increase quantity"
                               >
                                 +
                               </button>
                             </div>
-                            <div className="text-right min-w-[80px] sm:min-w-[100px]">
-                              <div className="font-bold text-base sm:text-lg md:text-xl text-black">
-                                ₹{(Number(itemPrice) * itemQuantity).toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+                            <div className="text-right">
+                              <div className="font-bold text-xl text-neutral-900">
+                                ₹{(Number(itemPrice) * itemQuantity).toLocaleString('en-IN')}
                               </div>
-                              <div className="text-xs sm:text-sm text-gray-500">
-                                ₹{Number(itemPrice).toLocaleString('en-IN', { minimumFractionDigits: 2 })} each
+                              <div className="text-sm text-neutral-600">
+                                ₹{Number(itemPrice).toLocaleString('en-IN')} each
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                    </div>
+                  );
+                })}
+              </div>
 
-          {/* Order Summary */}
-          <div className="lg:col-span-1 mt-8 lg:mt-0">
-            <Card className="text-black rounded-2xl border border-gray-200" style={{ background: '#fefbf2' }}>
-              <CardContent className="space-y-4 p-4 sm:p-6" style={{ background: '#fefbf2' }}>
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">Order Summary</h3>
-                <div className="flex justify-between text-base sm:text-lg">
-                  <span>Subtotal</span>
-                  <span>₹{total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                </div>
-                <div className="flex justify-between text-base sm:text-lg">
-                  <span>Shipping</span>
-                  <div className="text-right">
-                    <span className="line-through text-gray-400 mr-2">₹9.99</span>
-                    <span className="inline-block bg-gray-100 rounded px-2 py-0.5 text-xs sm:text-sm font-medium ml-1">Free</span>
+              {/* Order Summary Sidebar */}
+              <div className="lg:col-span-1">
+                <div className="bg-white/95 rounded-2xl p-6 shadow-lg sticky top-8">
+                  <h3 className="text-2xl font-semibold mb-6 text-neutral-900">Order Summary</h3>
+                  
+                  <div className="space-y-4 mb-6">
+                    <div className="flex justify-between text-lg text-neutral-700">
+                      <span>Subtotal</span>
+                      <span>₹{total.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="flex justify-between text-lg text-neutral-700">
+                      <span>Shipping</span>
+                      <div className="text-right">
+                        <span className="line-through text-neutral-400 mr-2">₹9.99</span>
+                        <span className="inline-block bg-green-100 text-green-800 rounded-full px-2 py-1 text-xs font-medium">Free</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between text-lg text-neutral-700">
+                      <span>Tax</span>
+                      <span>₹{(total * 0.08).toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="border-t border-neutral-200 pt-4">
+                      <div className="flex justify-between text-xl font-bold text-neutral-900">
+                        <span>Total</span>
+                        <span>₹{(total * 1.08).toLocaleString('en-IN')}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <Button 
+                      asChild 
+                      className="w-full bg-green-800 hover:bg-green-900 text-white text-lg font-semibold py-4 rounded-xl shadow-lg"
+                    >
+                      <Link href="/checkout">Proceed to Checkout</Link>
+                    </Button>
+                    <Button 
+                      asChild 
+                      variant="outline" 
+                      className="w-full border-neutral-300 text-neutral-700 hover:bg-neutral-50 text-lg font-semibold py-4 rounded-xl"
+                    >
+                      <Link href="/">Continue Shopping</Link>
+                    </Button>
                   </div>
                 </div>
-                <div className="flex justify-between text-base sm:text-lg">
-                  <span>Tax</span>
-                  <span>₹{(total * 0.08).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
-                </div>
-                <div className="border-t border-gray-300 pt-4 mb-2">
-                  <div className="flex justify-between text-lg sm:text-xl font-bold">
-                    <span>Total</span>
-                    <span>₹{(total * 1.08).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</span>
+
+                {/* Promo Code Section */}
+                <div className="bg-white/95 rounded-2xl p-6 shadow-lg mt-6">
+                  <h4 className="text-lg font-semibold mb-4 text-neutral-900">Promo Code</h4>
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="Enter promo code"
+                      className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-transparent"
+                    />
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-neutral-300 text-neutral-700 hover:bg-neutral-50 rounded-xl py-3"
+                    >
+                      Apply Code
+                    </Button>
                   </div>
                 </div>
-                <Button asChild className="w-full bg-black text-white hover:bg-gray-800 text-base font-semibold py-3 rounded-lg mt-2">
-                  <Link href="/checkout">Proceed to Checkout</Link>
-                </Button>
-                <Button asChild variant="outline" className="w-full bg-white border border-gray-300 text-base font-semibold py-3 rounded-lg">
-                  <Link href="/">Continue Shopping</Link>
-                </Button>
-              </CardContent>
-            </Card>
-            {/* Promo Code */}
-            <Card className="mt-4 rounded-2xl border border-gray-200" style={{ background: '#fefbf2' }}>
-              <CardContent className="p-4 sm:p-6" style={{ background: '#fefbf2' }}>
-                <h4 className="text-base sm:text-lg font-semibold mb-3">Promo Code</h4>
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <input
-                    type="text"
-                    placeholder="Enter promo code"
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-md text-base"
-                  />
-                  <Button variant="outline" className="rounded-md px-5">Apply</Button>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

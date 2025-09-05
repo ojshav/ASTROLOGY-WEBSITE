@@ -196,7 +196,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Products Table - Theme & Dark Mode */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-200 dark:border-gray-700">
+  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-auto border border-gray-200 dark:border-gray-700">
         <table className="w-full">
           <thead className="bg-purple-50 dark:bg-purple-900">
             <tr>
@@ -252,8 +252,8 @@ export default function ProductsPage() {
                       ₹{Number(product.price).toFixed(2)}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 dark:text-gray-100">
+                  <td className="px-6 py-4 max-w-[40ch] break-words align-top">
+                    <div className="text-sm text-gray-900 dark:text-gray-100 whitespace-normal">
                       {product.description || "yes"}
                     </div>
                   </td>
